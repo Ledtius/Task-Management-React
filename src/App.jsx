@@ -1,6 +1,8 @@
+import Header from "./components/Layout/Header";
+
 import TaskForm from "./components/Task/TaskForm";
 
-import Header from "./components/Layout/Header";
+import TaskFilter from "./components/Task/TaskFilter";
 
 import Footer from "./components/Layout/Footer";
 
@@ -9,6 +11,7 @@ const App = () => {
     <>
       <Header />
       <TaskForm />
+      <TaskFilter />
       <Footer />
     </>
   );
