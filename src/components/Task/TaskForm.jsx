@@ -1,6 +1,10 @@
 const TaskForm = () => {
-    
-  return <input type="text" name="" id="" />;
+  return (
+    <form action="">
+      <input type="text" name="" id="" />
+      <button>Enviar</button>
+    </form>
+  );
 };
 
 export default TaskForm;
