@@ -17,7 +17,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <TaskForm />
+      <TaskForm taskList={taskList} setTaskList={setTaskList} />
       <TaskFilter />
       <TaskList />
       <Footer />
