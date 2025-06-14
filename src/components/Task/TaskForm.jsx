@@ -1,5 +1,12 @@
+import { useState } from "react";
+
 const TaskForm = ({ taskList, setTaskList }) => {
-  console.log(taskList);
+  const [task, setTask] = useState({
+    name: "",
+    description: "",
+    state: true,
+  });
+
   return (
     <form action="">
       <input type="text" name="" id="" />
