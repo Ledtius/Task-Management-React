@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useEffect } from "react";
+
 import Header from "./components/Layout/Header";
 
 import TaskForm from "./components/Task/TaskForm";
@@ -9,6 +12,8 @@ import TaskList from "./components/Task/TaskList";
 import Footer from "./components/Layout/Footer";
 
 const App = () => {
+  const [taskList, setTaskList] = useState([]);
+
   return (
     <>
       <Header />
