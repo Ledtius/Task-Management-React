@@ -1,16 +1,16 @@
 const TaskFilter = () => {
   return (
-    <div>
-      <div>
+    <section>
+      <nav>
         <button>Todos</button>
         <button>Incompletas</button>
         <button>Completas</button>
-      </div>
+      </nav>
       <form>
         <input type="text" />
         <button>Enviar</button>
       </form>
-    </div>
+    </section>
   );
 };
 
