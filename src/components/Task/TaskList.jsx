@@ -1,10 +1,18 @@
 import TaskItem from "./TaskItem";
 
-const TaskList = () => {
+const TaskList = ({ taskList, setTaskList }) => {
   return (
-    <section>
-      <TaskItem />
-    </section>
+    <ul>
+      {taskList.map(({ id, name, description, status }) => (
+        <TaskItem
+          idTask={id}
+          TaskName={name}
+          taskDescrip={description}
+          taskStatus={status}
+          key={id}
+        />
+      ))}
+    </ul>
   );
 };
 
