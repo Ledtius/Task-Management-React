@@ -9,11 +9,7 @@ const TaskForm = ({ taskList, setTaskList }) => {
     state: true,
   });
 
-  const appearStyles = { display: "block" };
-
-  const disappStyles = { display: "none" };
-
-  const [alertStyles, setAlertStyles] = useState(disappStyles);
+  const [showAlert, setShowAlert] = useState(false);
 
   const { name } = task;
 
@@ -27,10 +23,10 @@ const TaskForm = ({ taskList, setTaskList }) => {
       setTask({ ...task, name: "" });
     } else {
       setTimeout(() => {
-        setAlertStyles(disappStyles);
+        setShowAlert(false);
         setTask({ ...task, name: "" });
       }, 1500);
-      setAlertStyles(appearStyles);
+      setShowAlert(true);
     }
   };
 
@@ -50,9 +46,11 @@ const TaskForm = ({ taskList, setTaskList }) => {
         <input onChange={handleInput} type="text" value={name} />
         <button>Enviar</button>
       </section>
-      <span style={alertStyles}>
-        La tarea "{name}" ya existe. Por favor ingresa una tarea diferente.
-      </span>
+      {showAlert && (
+        <span>
+          La tarea "{name}" ya existe. Por favor ingresa una tarea diferente.
+        </span>
+      )}
     </form>
   );
 };
