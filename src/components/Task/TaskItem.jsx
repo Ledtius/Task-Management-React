@@ -18,15 +18,27 @@ const TaskItem = ({
     setTaskInput(inputValue);
   };
 
+  const [showAlertTask, setShowAlertTask] = useState(false);
+
   const handleEditTaskAcceptBtn = () => {
-    setTaskList((prevTaskList) =>
-      prevTaskList.map((task) => {
-        if (task.id === idTask) {
-          return { ...task, name: taskInput };
-        }
-        return task;
-      })
-    );
+    const sameTaskName = taskList.some(({ name }) => name === taskInput);
+
+    console.log(sameTaskName);
+    if (!sameTaskName)
+      setTaskList((prevTaskList) =>
+        prevTaskList.map((task) => {
+          if (task.id === idTask) {
+            return { ...task, name: taskInput };
+          }
+          return task;
+        })
+      );
+    else {
+      setTimeout(() => {
+        setShowAlertTask(false);
+      }, 1500);
+      setShowAlertTask(true);
+    }
   };
 
   return (
@@ -46,6 +58,11 @@ const TaskItem = ({
               onChange={handleEditTaskInput}
               value={taskInput}
             />
+            {showAlertTask && (
+              <span>
+                Esta tarea ya existe. Por favor ingresa una tarea diferente.
+              </span>
+            )}
             <nav>
               <button onClick={handleEditTaskAcceptBtn}>Aceptar</button>
               <button>Cancelar</button>
