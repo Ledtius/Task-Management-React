@@ -9,6 +9,8 @@ const TaskList = ({ taskList, setTaskList }) => {
           TaskName={name}
           taskDescrip={description}
           taskStatus={status}
+          taskList={taskList}
+          setTaskList={setTaskList}
           key={id}
         />
       ))}
