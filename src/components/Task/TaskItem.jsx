@@ -10,7 +10,16 @@ const TaskItem = ({
 }) => {
   const [taskInput, setTaskInput] = useState(taskName);
 
-  const handleEditTaskBtn = () => {};
+  const [showAlertEditTask, setShowAlertEditTask] = useState(false);
+
+  const [showEditTaskBtn, setShowEditTaskBtn] = useState(true);
+
+  const [showEditTask, setShowEditTask] = useState(false);
+
+  const handleEditTaskBtn = () => {
+    setShowEditTask(true);
+    setShowEditTaskBtn(false);
+  };
 
   const handleEditTaskInput = (e) => {
     const inputValue = e.target.value;
@@ -18,13 +27,10 @@ const TaskItem = ({
     setTaskInput(inputValue);
   };
 
-  const [showAlertTask, setShowAlertTask] = useState(false);
-
   const handleEditTaskAcceptBtn = () => {
     const sameTaskName = taskList.some(({ name }) => name === taskInput);
 
-    console.log(sameTaskName);
-    if (!sameTaskName)
+    if (!sameTaskName) {
       setTaskList((prevTaskList) =>
         prevTaskList.map((task) => {
           if (task.id === idTask) {
@@ -33,12 +39,19 @@ const TaskItem = ({
           return task;
         })
       );
-    else {
+      setShowEditTaskBtn(true);
+      setShowEditTask(false);
+    } else {
       setTimeout(() => {
-        setShowAlertTask(false);
+        setShowAlertEditTask(false);
       }, 1500);
-      setShowAlertTask(true);
+      setShowAlertEditTask(true);
     }
+  };
+
+  const handleEditTaskCancelBtn = () => {
+    setShowEditTask(false);
+    setShowEditTaskBtn(true);
   };
 
   return (
@@ -48,26 +61,31 @@ const TaskItem = ({
         <section>
           <header>
             <span>{taskName}</span>
-            <button>Editar</button>
+
+            {showEditTaskBtn && (
+              <button onClick={handleEditTaskBtn}>Editar</button>
+            )}
           </header>
           {/* Panel cuando das a editar */}
-          <div>
-            <input
-              type="text"
-              placeholder={"Editando nombre..."}
-              onChange={handleEditTaskInput}
-              value={taskInput}
-            />
-            {showAlertTask && (
-              <span>
-                Esta tarea ya existe. Por favor ingresa una tarea diferente.
-              </span>
-            )}
-            <nav>
-              <button onClick={handleEditTaskAcceptBtn}>Aceptar</button>
-              <button>Cancelar</button>
-            </nav>
-          </div>
+          {showEditTask && (
+            <div>
+              <input
+                type="text"
+                placeholder={"Editando nombre..."}
+                onChange={handleEditTaskInput}
+                value={taskInput}
+              />
+              {showAlertEditTask && (
+                <span>
+                  Esta tarea ya existe. Por favor ingresa una tarea diferente.
+                </span>
+              )}
+              <nav>
+                <button onClick={handleEditTaskAcceptBtn}>Aceptar</button>
+                <button onClick={handleEditTaskCancelBtn}>Cancelar</button>
+              </nav>
+            </div>
+          )}
           <footer>
             <small>Añadir descripción</small>
             <button>Añadir</button>
