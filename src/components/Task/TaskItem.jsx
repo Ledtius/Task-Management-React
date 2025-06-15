@@ -1,18 +1,53 @@
-const TaskItem = ({ idTask, TaskName, taskDescrip, taskStatus }) => {
+import { useState } from "react";
+
+const TaskItem = ({
+  idTask,
+  taskName,
+  taskDescrip,
+  taskStatus,
+  taskList,
+  setTaskList,
+}) => {
+  const [taskInput, setTaskInput] = useState(taskName);
+
+  const handleEditTaskBtn = () => {};
+
+  const handleEditTaskInput = (e) => {
+    const inputValue = e.target.value;
+
+    setTaskInput(inputValue);
+  };
+
+  const handleEditTaskAcceptBtn = () => {
+    setTaskList((prevTaskList) =>
+      prevTaskList.map((task) => {
+        if (task.id === idTask) {
+          return { ...task, name: taskInput };
+        }
+        return task;
+      })
+    );
+  };
+
   return (
     <li>
       <article>
         <input type="checkbox" name="" id="" />
         <section>
           <header>
-            <span>{TaskName}</span>
+            <span>{taskName}</span>
             <button>Editar</button>
           </header>
           {/* Panel cuando das a editar */}
           <div>
-            <input type="text" placeholder={"Editando nombre..."} />
+            <input
+              type="text"
+              placeholder={"Editando nombre..."}
+              onChange={handleEditTaskInput}
+              value={taskInput}
+            />
             <nav>
-              <button>Aceptar</button>
+              <button onClick={handleEditTaskAcceptBtn}>Aceptar</button>
               <button>Cancelar</button>
             </nav>
           </div>
