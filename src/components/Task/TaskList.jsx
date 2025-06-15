@@ -6,7 +6,7 @@ const TaskList = ({ taskList, setTaskList }) => {
       {taskList.map(({ id, name, description, status }) => (
         <TaskItem
           idTask={id}
-          TaskName={name}
+          taskName={name}
           taskDescrip={description}
           taskStatus={status}
           taskList={taskList}
