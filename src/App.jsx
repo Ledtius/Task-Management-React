@@ -19,7 +19,7 @@ const App = () => {
       <Header />
       <TaskForm taskList={taskList} setTaskList={setTaskList} />
       <TaskFilter />
-      <TaskList />
+      <TaskList taskList={taskList} setTaskList={setTaskList} />
       <Footer />
     </>
   );
