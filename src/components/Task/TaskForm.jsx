@@ -15,17 +15,13 @@ const TaskForm = ({ taskList, setTaskList }) => {
 
   const [alertStyles, setAlertStyles] = useState(disappStyles);
 
-  console.log(alertStyles);
   const { name } = task;
-
-  const randomId = crypto.randomUUID();
 
   const handleForm = (e) => {
     e.preventDefault();
 
     let repeatTask = taskList.some(({ name: nameArray }) => name === nameArray);
 
-    console.log(repeatTask);
     if (!repeatTask) {
       setTaskList([...taskList, task]);
       setTask({ ...task, name: "" });
@@ -33,7 +29,7 @@ const TaskForm = ({ taskList, setTaskList }) => {
       setTimeout(() => {
         setAlertStyles(disappStyles);
         setTask({ ...task, name: "" });
-      }, [1500]);
+      }, 1500);
       setAlertStyles(appearStyles);
     }
   };
@@ -45,7 +41,7 @@ const TaskForm = ({ taskList, setTaskList }) => {
   const handleInput = (e) => {
     const inputValue = e.target.value;
 
-    setTask({ ...task, name: inputValue, id: randomId });
+    setTask({ ...task, name: inputValue, id: crypto.randomUUID() });
   };
 
   return (
