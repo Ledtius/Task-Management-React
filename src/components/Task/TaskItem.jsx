@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const TaskItem = ({
   idTask,
@@ -15,6 +15,30 @@ const TaskItem = ({
   const [showEditTaskBtn, setShowEditTaskBtn] = useState(true);
 
   const [showEditTask, setShowEditTask] = useState(false);
+
+  /* Description */
+
+  const [descripInput, setDescripInput] = useState(taskDescrip);
+
+  const [editDescrip, setEditDescrip] = useState("");
+
+  /* Agregue esto porque el editDescrip al la primera edicion no me tomaba el valor del descripInput, me toco utilizar el useEffect, pero la verdad no entiendo porque tube la necesidad de hacerlo, acaso no se remonta el componente cada vez que hago un set...()? por ahora no entiendo, dejare esta duda aqui (ahora veo que si uso escribo en el setEditdescrip(taskDescrip) no me funciona, sera que tengo que utilizar un useEffect para el tambien?, claro si en este caso lo utilizara en vez de el editDescrip?)  */
+
+  useEffect(() => {
+    setEditDescrip(descripInput);
+  }, [descripInput]);
+
+  const [showAddDecrip, setShowAddDescrip] = useState(false);
+
+  const [showAddDescripBtn, setShowAddDescripBtn] = useState(true);
+
+  const [showEditDescripBtn, setShowEditDescripBtn] = useState(false);
+
+  const [showEditDescrip, setShowEditDescrip] = useState(false);
+
+  const [showAlertAddDescrip, setShowAlertAddDescrip] = useState(false);
+
+  const [showAlertEditDescrip, setShowAlertEditDescrip] = useState(false);
 
   const handleEditTaskBtn = () => {
     setShowEditTask(true);
@@ -54,16 +78,6 @@ const TaskItem = ({
     setShowEditTaskBtn(true);
   };
 
-  const [descripInput, setDescripInput] = useState(taskDescrip);
-
-  const [showAddDecrip, setShowAddDescrip] = useState(false);
-
-  const [showAddDescripBtn, setShowAddDescripBtn] = useState(true);
-
-  const [showEditDescripBtn, setShowEditDescripBtn] = useState(false);
-
-  const [showEditDescrip, setShowEditDescrip] = useState(false);
-
   const handleAddDescripBtn = () => {
     setShowAddDescrip(true);
     setShowAddDescripBtn(false);
@@ -76,22 +90,67 @@ const TaskItem = ({
   };
 
   const handleAddDescripAddBtn = (e) => {
-    setTaskList((prevTaskList) => {
+    if (descripInput) {
       setShowAddDescripBtn(false);
       setShowAddDescrip(false);
-
-      return prevTaskList.map((task) => {
-        if (task.name === taskName) {
-          return { ...task, description: descripInput };
-        }
-        return task;
+      setShowEditDescripBtn(true);
+      setTaskList((prevTaskList) => {
+        return prevTaskList.map((task) => {
+          if (task.name === taskName) {
+            return { ...task, description: descripInput };
+          }
+          return task;
+        });
       });
-    });
+    } else {
+      setTimeout(() => {
+        setShowAlertAddDescrip(false);
+      }, 1500);
+      setShowAlertAddDescrip(true);
+    }
   };
 
   const handleAddDescripCancelBtn = () => {
     setShowAddDescrip(false);
     setShowAddDescripBtn(true);
+  };
+
+  const handleEditDescripBtn = () => {
+    setShowEditDescrip(true);
+    setShowEditDescripBtn(false);
+  };
+
+  const handleEditDescripInput = (e) => {
+    const inputValue = e.target.value;
+
+    setEditDescrip(inputValue);
+  };
+
+  const handleEditDescripAcceptBtn = () => {
+    console.log(editDescrip);
+    if (editDescrip) {
+      setShowEditDescrip(false);
+      setShowEditDescripBtn(true);
+      setTaskList((prevTaskList) => {
+        return prevTaskList.map((task) => {
+          if (task.description === taskDescrip) {
+            return { ...task, description: editDescrip };
+          }
+          return task;
+        });
+      });
+    } else {
+      console.log("12");
+      setTimeout(() => {
+        setShowAlertEditDescrip(false);
+      }, 1500);
+      setShowAlertEditDescrip(true);
+    }
+  };
+
+  const handleEditDescripCancelBtn = () => {
+    setShowEditDescripBtn(true);
+    setShowEditDescrip(false);
   };
 
   return (
@@ -148,6 +207,9 @@ const TaskItem = ({
                   Cancelar (Añadir tarea)
                 </button>
               </nav>
+              {showAlertAddDescrip && (
+                <span>Debes de ingresar una descripción valida</span>
+              )}
             </div>
           )}
 
@@ -155,19 +217,31 @@ const TaskItem = ({
           <div>
             <small>Descripcion añadida{taskDescrip}</small>
             <nav>
-              <button>Editar</button>
+              {showEditDescripBtn && (
+                <button onClick={handleEditDescripBtn}>Editar</button>
+              )}
               <button>Eliminar</button>
             </nav>
           </div>
 
           {/* Panel cuando das a editar */}
-          <div>
-            <input type="text" placeholder={"Editando descripción..."} />
-            <nav>
-              <button>Aceptar</button>
-              <button>Cancelar</button>
-            </nav>
-          </div>
+          {showEditDescrip && (
+            <div>
+              <input
+                type="text"
+                placeholder={"Editando descripción..."}
+                value={editDescrip}
+                onChange={handleEditDescripInput}
+              />
+              <nav>
+                <button onClick={handleEditDescripAcceptBtn}>Aceptar</button>
+                <button onClick={handleEditDescripCancelBtn}>Cancelar</button>
+              </nav>
+              {showAlertEditDescrip && (
+                <span>Debes de ingresar una descripción valida</span>
+              )}
+            </div>
+          )}
         </section>
         <button>Eliminar</button>
       </article>
