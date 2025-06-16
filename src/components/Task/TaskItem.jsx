@@ -40,6 +40,8 @@ const TaskItem = ({
 
   const [showAlertEditDescrip, setShowAlertEditDescrip] = useState(false);
 
+  const [showAlertEditTaskFalsy, setShowAlertEditTaskFalsy] = useState(false);
+
   const handleEditTaskBtn = () => {
     setShowEditTask(true);
     setShowEditTaskBtn(false);
@@ -52,24 +54,31 @@ const TaskItem = ({
   };
 
   const handleEditTaskAcceptBtn = () => {
-    const sameTaskName = taskList.some(({ name }) => name === taskInput);
+    if (taskInput) {
+      const sameTaskName = taskList.some(({ name }) => name === taskInput);
 
-    if (!sameTaskName) {
-      setTaskList((prevTaskList) =>
-        prevTaskList.map((task) => {
-          if (task.id === idTask) {
-            return { ...task, name: taskInput };
-          }
-          return task;
-        })
-      );
-      setShowEditTaskBtn(true);
-      setShowEditTask(false);
+      if (!sameTaskName) {
+        setTaskList((prevTaskList) =>
+          prevTaskList.map((task) => {
+            if (task.id === idTask) {
+              return { ...task, name: taskInput };
+            }
+            return task;
+          })
+        );
+        setShowEditTaskBtn(true);
+        setShowEditTask(false);
+      } else {
+        setTimeout(() => {
+          setShowAlertEditTask(false);
+        }, 1500);
+        setShowAlertEditTask(true);
+      }
     } else {
       setTimeout(() => {
-        setShowAlertEditTask(false);
+        setShowAlertEditTaskFalsy(false);
       }, 1500);
-      setShowAlertEditTask(true);
+      setShowAlertEditTaskFalsy(true);
     }
   };
 
@@ -183,6 +192,7 @@ const TaskItem = ({
                 <button onClick={handleEditTaskAcceptBtn}>Aceptar</button>
                 <button onClick={handleEditTaskCancelBtn}>Cancelar</button>
               </nav>
+              {showAlertEditTaskFalsy && <span>Ingrese un valor valido</span>}
             </div>
           )}
           {/* Añadir descripción */}
