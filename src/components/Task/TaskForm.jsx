@@ -10,6 +10,7 @@ const TaskForm = ({ taskList, setTaskList }) => {
   });
 
   const [showAlert, setShowAlert] = useState(false);
+  const [showAlertFalsy, setShowAlertFalsy] = useState(false);
 
   const { name } = task;
 
@@ -19,8 +20,15 @@ const TaskForm = ({ taskList, setTaskList }) => {
     let repeatTask = taskList.some(({ name: nameArray }) => name === nameArray);
 
     if (!repeatTask) {
-      setTaskList([...taskList, task]);
-      setTask({ ...task, name: "" });
+      if (task.name) {
+        setTaskList([...taskList, task]);
+        setTask({ ...task, name: "" });
+      } else {
+        setTimeout(() => {
+          setShowAlertFalsy(false);
+        }, 1500);
+        setShowAlertFalsy(true);
+      }
     } else {
       setTimeout(() => {
         setShowAlert(false);
@@ -51,6 +59,7 @@ const TaskForm = ({ taskList, setTaskList }) => {
           La tarea "{name}" ya existe. Por favor ingresa una tarea diferente.
         </span>
       )}
+      {showAlertFalsy && <span>Ingrese un valor valido</span>}
     </form>
   );
 };
