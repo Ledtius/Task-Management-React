@@ -54,6 +54,46 @@ const TaskItem = ({
     setShowEditTaskBtn(true);
   };
 
+  const [descripInput, setDescripInput] = useState(taskDescrip);
+
+  const [showAddDecrip, setShowAddDescrip] = useState(false);
+
+  const [showAddDescripBtn, setShowAddDescripBtn] = useState(true);
+
+  const [showEditDescripBtn, setShowEditDescripBtn] = useState(false);
+
+  const [showEditDescrip, setShowEditDescrip] = useState(false);
+
+  const handleAddDescripBtn = () => {
+    setShowAddDescrip(true);
+    setShowAddDescripBtn(false);
+  };
+
+  const handleAddDescripInput = (e) => {
+    const inputValue = e.target.value;
+
+    setDescripInput(inputValue);
+  };
+
+  const handleAddDescripAddBtn = (e) => {
+    setTaskList((prevTaskList) => {
+      setShowAddDescripBtn(false);
+      setShowAddDescrip(false);
+
+      return prevTaskList.map((task) => {
+        if (task.name === taskName) {
+          return { ...task, description: descripInput };
+        }
+        return task;
+      });
+    });
+  };
+
+  const handleAddDescripCancelBtn = () => {
+    setShowAddDescrip(false);
+    setShowAddDescripBtn(true);
+  };
+
   return (
     <li>
       <article>
@@ -86,14 +126,38 @@ const TaskItem = ({
               </nav>
             </div>
           )}
-          <footer>
-            <small>Añadir descripción</small>
-            <button>Añadir</button>
-          </footer>
-          {/* Cuando se añada la tarea */}
+          {/* Añadir descripción */}
+          {showAddDescripBtn && (
+            <footer>
+              <small>Añadir descripción</small>
+              <button onClick={handleAddDescripBtn}>Añadir</button>
+            </footer>
+          )}
+          {/* Panel para escribir la descripción */}
+          {showAddDecrip && (
+            <div>
+              <input
+                type="text"
+                placeholder="Escriba el nombre de la descripción"
+                onChange={handleAddDescripInput}
+              />
+
+              <nav>
+                <button onClick={handleAddDescripAddBtn}>Añadir Tarea</button>
+                <button onClick={handleAddDescripCancelBtn}>
+                  Cancelar (Añadir tarea)
+                </button>
+              </nav>
+            </div>
+          )}
+
+          {/* Cuando se añada la descripción */}
           <div>
-            <small>{taskDescrip}</small>
-            <button>Editar</button>
+            <small>Descripcion añadida{taskDescrip}</small>
+            <nav>
+              <button>Editar</button>
+              <button>Eliminar</button>
+            </nav>
           </div>
 
           {/* Panel cuando das a editar */}
