@@ -1,7 +1,6 @@
 import TaskItem from "./TaskItem";
 
 const TaskList = ({ taskList, setTaskList, listState }) => {
-  console.log(listState);
   if (listState === "all") {
     return (
       <ul>

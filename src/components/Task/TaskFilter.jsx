@@ -1,7 +1,7 @@
-const TaskFilter = (listState, setListState) => {
+const TaskFilter = ({ listState, setListState }) => {
   const handleBtnIdValue = (e) => {
     const btnIdValue = e.target.id;
-    console.log(btnIdValue);
+    setListState(btnIdValue);
   };
 
   return (
