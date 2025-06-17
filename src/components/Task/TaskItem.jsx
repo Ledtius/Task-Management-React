@@ -32,6 +32,8 @@ const TaskItem = ({
 
   const [showAddDescripBtn, setShowAddDescripBtn] = useState(true);
 
+  const [showDescripMsg, setShowDescripMsg] = useState(false);
+
   const [showEditDescripBtn, setShowEditDescripBtn] = useState(false);
 
   const [showEditDescrip, setShowEditDescrip] = useState(false);
@@ -103,6 +105,7 @@ const TaskItem = ({
       setShowAddDescripBtn(false);
       setShowAddDescrip(false);
       setShowEditDescripBtn(true);
+      setShowDescripMsg(true);
       setTaskList((prevTaskList) => {
         return prevTaskList.map((task) => {
           if (task.name === taskName) {
@@ -127,6 +130,7 @@ const TaskItem = ({
   const handleEditDescripBtn = () => {
     setShowEditDescrip(true);
     setShowEditDescripBtn(false);
+    setShowDescripMsg(false);
   };
 
   const handleEditDescripInput = (e) => {
@@ -140,6 +144,7 @@ const TaskItem = ({
     if (editDescrip) {
       setShowEditDescrip(false);
       setShowEditDescripBtn(true);
+      setShowDescripMsg(true);
       setTaskList((prevTaskList) => {
         return prevTaskList.map((task) => {
           if (task.description === taskDescrip) {
@@ -160,7 +165,28 @@ const TaskItem = ({
   const handleEditDescripCancelBtn = () => {
     setShowEditDescripBtn(true);
     setShowEditDescrip(false);
+    setShowDescripMsg(true);
   };
+
+  const handleEditDescripDeleteBtn = () => {
+    // setShowAddDescrip(true);
+    setDescripInput("");
+    setShowAddDescripBtn(true);
+    setShowDescripMsg(false);
+    setTaskList((prevTaskList) => {
+      return prevTaskList.map((task) => {
+        if (task.id === idTask) {
+          return { ...task, description: "" };
+        }
+        return task;
+      });
+    });
+  };
+
+  useEffect(() => {
+    console.log("aaa");
+    setDescripInput("");
+  }, []);
 
   return (
     <li>
@@ -209,12 +235,13 @@ const TaskItem = ({
                 type="text"
                 placeholder="Escriba el nombre de la descripción"
                 onChange={handleAddDescripInput}
+                value={descripInput}
               />
 
               <nav>
-                <button onClick={handleAddDescripAddBtn}>Añadir Tarea</button>
+                <button onClick={handleAddDescripAddBtn}>Añadir Descrip</button>
                 <button onClick={handleAddDescripCancelBtn}>
-                  Cancelar (Añadir tarea)
+                  Cancel Descrip
                 </button>
               </nav>
               {showAlertAddDescrip && (
@@ -225,12 +252,12 @@ const TaskItem = ({
 
           {/* Cuando se añada la descripción */}
           <div>
-            <small>Descripcion añadida{taskDescrip}</small>
+            {showDescripMsg && <small>Descripcion añadida{taskDescrip}</small>}
             <nav>
               {showEditDescripBtn && (
                 <button onClick={handleEditDescripBtn}>Editar</button>
               )}
-              <button>Eliminar</button>
+              <button onClick={handleEditDescripDeleteBtn}>Eliminar</button>
             </nav>
           </div>
 
