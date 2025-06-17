@@ -6,7 +6,7 @@ const TaskForm = ({ taskList, setTaskList }) => {
     id: "",
     name: "",
     description: "",
-    state: true,
+    state: false,
   });
 
   const [showAlert, setShowAlert] = useState(false);
