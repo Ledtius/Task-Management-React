@@ -8,7 +8,7 @@ const TaskItem = ({
   taskList,
   setTaskList,
 }) => {
-  /* Task state variables */
+  /* Task name state variables */
 
   const [taskInput, setTaskInput] = useState(taskName);
 
@@ -44,7 +44,7 @@ const TaskItem = ({
 
   const [showAlertEditDescrip, setShowAlertEditDescrip] = useState(false);
 
-  /* Task functions section */
+  /* Task name functions section */
 
   const handleEditTaskBtn = () => {
     setShowEditTask(true);
@@ -189,15 +189,10 @@ const TaskItem = ({
     });
   };
 
-  /* Checkbox state variables */
-
-  const [checkboxState, setCheckboxState] = useState(false);
-
   /* Checkbox functions section */
 
   const handleCheckbox = (e) => {
-    const checkboxValue = e.target.checked ?? true;
-    console.log(checkboxValue);
+    const checkboxValue = e.target.checked;
 
     setTaskList((prevTaskList) =>
       prevTaskList.map((task) => {
@@ -207,6 +202,18 @@ const TaskItem = ({
         return task;
       })
     );
+  };
+
+  /* Task function  */
+
+  const handleTaskDeleteBtn = () => {
+    setTaskList((prevTaskList) => {
+      return prevTaskList.filter((task) => {
+        if (task.id !== idTask) {
+          return task;
+        }
+      });
+    });
   };
 
   return (
@@ -303,7 +310,7 @@ const TaskItem = ({
             </div>
           )}
         </section>
-        <button>Eliminar</button>
+        <button onClick={handleTaskDeleteBtn}>Eliminar</button>
       </article>
     </li>
   );
