@@ -1,7 +1,18 @@
-const TaskFilter = ({ listState, setListState }) => {
+import { useEffect, useState } from "react";
+
+const TaskFilter = ({ setListState, filterInput, setFilterInput }) => {
   const handleBtnIdValue = (e) => {
     const btnIdValue = e.target.id;
     setListState(btnIdValue);
+  };
+
+  const handleForm = (e) => {
+    e.preventDefault();
+  };
+
+  const handleInput = (e) => {
+    const inputValue = e.target.value;
+    setFilterInput(inputValue);
   };
 
   return (
@@ -17,8 +28,8 @@ const TaskFilter = ({ listState, setListState }) => {
           Completas
         </button>
       </nav>
-      <form>
-        <input type="text" />
+      <form onSubmit={handleForm}>
+        <input type="text" value={filterInput} onChange={handleInput} />
         <button>Enviar</button>
       </form>
     </section>

@@ -16,15 +16,23 @@ const App = () => {
 
   const [listState, setListState] = useState("all");
 
+  const [filterInput, setFilterInput] = useState("");
+
   return (
     <>
       <Header />
       <TaskForm taskList={taskList} setTaskList={setTaskList} />
-      <TaskFilter listState={listState} setListState={setListState} />
+      <TaskFilter
+        listState={listState}
+        setListState={setListState}
+        filterInput={filterInput}
+        setFilterInput={setFilterInput}
+      />
       <TaskList
         taskList={taskList}
         setTaskList={setTaskList}
         listState={listState}
+        filterInput={filterInput}
       />
       <Footer />
     </>
