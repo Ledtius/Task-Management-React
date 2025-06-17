@@ -1,10 +1,21 @@
-const TaskFilter = () => {
+const TaskFilter = (listState, setListState) => {
+  const handleBtnIdValue = (e) => {
+    const btnIdValue = e.target.id;
+    console.log(btnIdValue);
+  };
+
   return (
     <section>
       <nav>
-        <button>Todos</button>
-        <button>Incompletas</button>
-        <button>Completas</button>
+        <button id="all" onClick={handleBtnIdValue}>
+          Todos
+        </button>
+        <button id="incomplete" onClick={handleBtnIdValue}>
+          Incompletas
+        </button>
+        <button id="complete" onClick={handleBtnIdValue}>
+          Completas
+        </button>
       </nav>
       <form>
         <input type="text" />
