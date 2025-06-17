@@ -87,6 +87,7 @@ const TaskItem = ({
   const handleEditTaskCancelBtn = () => {
     setShowEditTask(false);
     setShowEditTaskBtn(true);
+    setTaskInput(taskName);
   };
 
   const handleAddDescripBtn = () => {
@@ -124,6 +125,7 @@ const TaskItem = ({
   const handleAddDescripCancelBtn = () => {
     setShowAddDescrip(false);
     setShowAddDescripBtn(true);
+    setDescripInput("");
   };
 
   const handleEditDescripBtn = () => {
@@ -162,6 +164,7 @@ const TaskItem = ({
   const handleEditDescripCancelBtn = () => {
     setShowEditDescrip(false);
     setShowDescripMsg(true);
+    setEditDescrip(taskDescrip);
   };
 
   const handleEditDescripDeleteBtn = () => {
