@@ -4,10 +4,12 @@ const TaskItem = ({
   idTask,
   taskName,
   taskDescrip,
-  taskStatus,
+  taskState,
   taskList,
   setTaskList,
 }) => {
+  /* Task state variables */
+
   const [taskInput, setTaskInput] = useState(taskName);
 
   const [showAlertEditTask, setShowAlertEditTask] = useState(false);
@@ -16,7 +18,9 @@ const TaskItem = ({
 
   const [showEditTask, setShowEditTask] = useState(false);
 
-  /* Description */
+  const [showAlertEditTaskFalsy, setShowAlertEditTaskFalsy] = useState(false);
+
+  /* Description state variables */
 
   const [descripInput, setDescripInput] = useState(taskDescrip);
 
@@ -40,7 +44,7 @@ const TaskItem = ({
 
   const [showAlertEditDescrip, setShowAlertEditDescrip] = useState(false);
 
-  const [showAlertEditTaskFalsy, setShowAlertEditTaskFalsy] = useState(false);
+  /* Task functions section */
 
   const handleEditTaskBtn = () => {
     setShowEditTask(true);
@@ -89,6 +93,8 @@ const TaskItem = ({
     setShowEditTaskBtn(true);
     setTaskInput(taskName);
   };
+
+  /* Description functions section */
 
   const handleAddDescripBtn = () => {
     setShowAddDescrip(true);
@@ -183,15 +189,30 @@ const TaskItem = ({
     });
   };
 
-  useEffect(() => {
-    console.log("aaa");
-    setDescripInput("");
-  }, []);
+  /* Checkbox state variables */
+
+  const [checkboxState, setCheckboxState] = useState(false);
+
+  /* Checkbox functions section */
+
+  const handleCheckbox = (e) => {
+    const checkboxValue = e.target.checked ?? true;
+    console.log(checkboxValue);
+
+    setTaskList((prevTaskList) =>
+      prevTaskList.map((task) => {
+        if (task.id === idTask) {
+          return { ...task, state: checkboxValue };
+        }
+        return task;
+      })
+    );
+  };
 
   return (
     <li>
       <article>
-        <input type="checkbox" name="" id="" />
+        <input type="checkbox" onChange={handleCheckbox} checked={taskState} />
         <section>
           <header>
             <span>{taskName}</span>
