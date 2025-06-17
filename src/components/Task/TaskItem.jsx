@@ -34,8 +34,6 @@ const TaskItem = ({
 
   const [showDescripMsg, setShowDescripMsg] = useState(false);
 
-  const [showEditDescripBtn, setShowEditDescripBtn] = useState(false);
-
   const [showEditDescrip, setShowEditDescrip] = useState(false);
 
   const [showAlertAddDescrip, setShowAlertAddDescrip] = useState(false);
@@ -106,7 +104,6 @@ const TaskItem = ({
     if (descripInput) {
       setShowAddDescripBtn(false);
       setShowAddDescrip(false);
-      setShowEditDescripBtn(true);
       setShowDescripMsg(true);
       setTaskList((prevTaskList) => {
         return prevTaskList.map((task) => {
@@ -131,7 +128,6 @@ const TaskItem = ({
 
   const handleEditDescripBtn = () => {
     setShowEditDescrip(true);
-    setShowEditDescripBtn(false);
     setShowDescripMsg(false);
   };
 
@@ -145,7 +141,6 @@ const TaskItem = ({
     console.log(editDescrip);
     if (editDescrip) {
       setShowEditDescrip(false);
-      setShowEditDescripBtn(true);
       setShowDescripMsg(true);
       setTaskList((prevTaskList) => {
         return prevTaskList.map((task) => {
@@ -165,7 +160,6 @@ const TaskItem = ({
   };
 
   const handleEditDescripCancelBtn = () => {
-    setShowEditDescripBtn(true);
     setShowEditDescrip(false);
     setShowDescripMsg(true);
   };
@@ -174,6 +168,7 @@ const TaskItem = ({
     // setShowAddDescrip(true);
     setDescripInput("");
     setShowAddDescripBtn(true);
+
     setShowDescripMsg(false);
     setTaskList((prevTaskList) => {
       return prevTaskList.map((task) => {
@@ -256,10 +251,12 @@ const TaskItem = ({
           <div>
             {showDescripMsg && <small>Descripcion añadida{taskDescrip}</small>}
             <nav>
-              {showEditDescripBtn && (
+              {showDescripMsg && (
                 <button onClick={handleEditDescripBtn}>Editar</button>
               )}
-              <button onClick={handleEditDescripDeleteBtn}>Eliminar</button>
+              {showDescripMsg && (
+                <button onClick={handleEditDescripDeleteBtn}>Eliminar</button>
+              )}
             </nav>
           </div>
 
