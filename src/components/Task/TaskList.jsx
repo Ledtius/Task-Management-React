@@ -3,12 +3,12 @@ import TaskItem from "./TaskItem";
 const TaskList = ({ taskList, setTaskList }) => {
   return (
     <ul>
-      {taskList.map(({ id, name, description, status }) => (
+      {taskList.map(({ id, name, description, state }) => (
         <TaskItem
           idTask={id}
           taskName={name}
           taskDescrip={description}
-          taskStatus={status}
+          taskState={state}
           taskList={taskList}
           setTaskList={setTaskList}
           key={id}
