@@ -12,7 +12,16 @@ import TaskList from "./components/Task/TaskList";
 import Footer from "./components/Layout/Footer";
 
 const App = () => {
-  const [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState(() => {
+    // const defaultValue = [];
+
+    return JSON.parse(localStorage.getItem("taskList")) || [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("taskList", JSON.stringify(taskList));
+    console.log(taskList);
+  }, [taskList]);
 
   const [listState, setListState] = useState("all");
 
