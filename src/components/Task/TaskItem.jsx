@@ -34,9 +34,15 @@ const TaskItem = ({
 
   const [showAddDecrip, setShowAddDescrip] = useState(false);
 
-  const [showAddDescripBtn, setShowAddDescripBtn] = useState(true);
+  const [showAddDescripBtn, setShowAddDescripBtn] = useState(() => {
+    if (taskDescrip) return false;
+    return true;
+  });
 
-  const [showDescripMsg, setShowDescripMsg] = useState(false);
+  const [showDescripMsg, setShowDescripMsg] = useState(() => {
+    if (taskDescrip) return true;
+    return false;
+  });
 
   const [showEditDescrip, setShowEditDescrip] = useState(false);
 
@@ -108,6 +114,7 @@ const TaskItem = ({
   };
 
   const handleAddDescripAddBtn = (e) => {
+    console.log(taskDescrip);
     if (descripInput) {
       setShowAddDescripBtn(false);
       setShowAddDescrip(false);
@@ -280,7 +287,7 @@ const TaskItem = ({
 
           {/* Cuando se añada la descripción */}
           <div>
-            {showDescripMsg && <small>Descripcion añadida{taskDescrip}</small>}
+            {showDescripMsg && <small>{taskDescrip}</small>}
             <nav>
               {showDescripMsg && (
                 <button onClick={handleEditDescripBtn}>Editar</button>
