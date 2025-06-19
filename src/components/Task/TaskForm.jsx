@@ -37,11 +37,6 @@ const TaskForm = ({ taskList, setTaskList }) => {
       setShowAlert(true);
     }
   };
-
-  useEffect(() => {
-    console.log(taskList);
-  }, [taskList]);
-
   const handleInput = (e) => {
     const inputValue = e.target.value;
 
