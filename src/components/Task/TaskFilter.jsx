@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import filterStyles from "../../styles/Task/TaskFilter.module.css";
+
+import { ListTodo, LayoutList, ListChecks, Search } from "lucide-react";
 
 const TaskFilter = ({ setListState, filterInput, setFilterInput }) => {
   const handleBtnIdValue = (e) => {
@@ -19,18 +21,20 @@ const TaskFilter = ({ setListState, filterInput, setFilterInput }) => {
     <section>
       <nav>
         <button id="all" onClick={handleBtnIdValue}>
-          Todos
+          <ListTodo />
         </button>
         <button id="incomplete" onClick={handleBtnIdValue}>
-          Incompletas
+          <LayoutList />
         </button>
         <button id="complete" onClick={handleBtnIdValue}>
-          Completas
+          <ListChecks />
         </button>
       </nav>
       <form onSubmit={handleForm}>
         <input type="text" value={filterInput} onChange={handleInput} />
-        <button>Enviar</button>
+        <button>
+          <Search />
+        </button>
       </form>
     </section>
   );
