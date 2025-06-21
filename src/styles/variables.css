@@ -2,7 +2,7 @@
   /* Fondos generales */
   --color-bg: #f4f4f4;
   --color-bg-input: #fff;
-  --color-bg-tooltip: #B0B0B0;
+  --color-bg-tooltip: #b0b0b0;
   --color-bg-input-edit: #f5f5f5;
 
   /* Textos */
@@ -10,6 +10,7 @@
   --color-text-input: #1f1f1f;
   --color-text-tooltip: #2e2e2e;
   --color-text-description-placeholder: #a9a9a9;
+  --color-text-error: #dc3545;
 
   /* Estados de tarea */
   --color-bg-all: #a9a9a9;
@@ -35,6 +36,10 @@
   --border-radius-btn: 0.8rem;
   --border-input: 1px solid #44444483;
 
+  /* Btn and input padding */
+
+  --padding-btn: 0.8rem;
+  --padding-input: 1.1rem;
   /* Utilidad */
   --color-white: #fff;
 
@@ -44,8 +49,8 @@
   --shadow-focus: 0 2px 6px rgba(0, 123, 255, 0.25);
 
   --shadow-error: 0 2px 6px #d9534f;
-  
-  --shadow-button: 0 2px 4px rgba(0, 0, 0, 0.15);
+
+  --shadow-btn: 0 2px 4px rgba(0, 0, 0, 0.15);
   --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.08);
   --shadow-tooltip: 0 4px 10px rgba(0, 0, 0, 0.15);
 
