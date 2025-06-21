@@ -1,0 +1,91 @@
+.filter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  width: var(--flex-width);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  background-color: red;
+  border-radius: var(--border-radius-btn);
+  padding: 0.4rem 0.8rem;
+  gap: 0.4rem;
+  color: var(--color-text-filter);
+}
+
+.filterBtn:nth-child(1) {
+  background-color: var(--color-bg-all);
+  border: 1px solid var(--color-bg-all);
+  transition: all 0.4s ease-in-out;
+}
+
+.filterBtn:nth-child(2) {
+  background-color: var(--color-bg-incomplete);
+  border: 1px solid var(--color-bg-incomplete);
+  transition: all 0.4s ease-in-out;
+}
+
+.filterBtn:nth-child(3) {
+  background-color: var(--color-bg-completed);
+  border: 1px solid var(--color-bg-completed);
+  transition: all 0.4s ease-in-out;
+}
+
+.icon {
+  width: 1.6rem;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.input {
+  border-radius: var(--border-radius-btn);
+  padding: var(--padding-input2);
+  border: 1px solid var(--border-input);
+  box-shadow: var(--shadow-input);
+  width: 100%;
+  /* font-size: 0.8rem; */
+}
+
+.input:focus {
+  box-shadow: var(--shadow-focus);
+}
+
+.form:focus-within .searchBtn {
+  box-shadow: var(--shadow-focus);
+}
+
+.input::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.searchBtn {
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius-btn);
+  border: 1px solid var(--color-bg-send);
+  background-color: var(--color-bg-send);
+  padding: 0.4rem 0.8rem;
+  position: absolute;
+  right: 0;
+}
+
+.iconSearch {
+  width: 1.6rem;
+  stroke: var(--color-text-filter);
+}
