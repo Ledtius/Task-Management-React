@@ -9,6 +9,8 @@ import TaskFilter from "./components/Task/TaskFilter";
 
 import TaskList from "./components/Task/TaskList";
 
+import TaskDelete from "./components/Task/TaskDelete";
+
 import Footer from "./components/Layout/Footer";
 
 const App = () => {
@@ -42,6 +44,11 @@ const App = () => {
         setTaskList={setTaskList}
         listState={listState}
         filterInput={filterInput}
+      />
+      <TaskDelete
+        taskList={taskList}
+        setTaskList={setTaskList}
+        listState={listState}
       />
       <Footer />
     </>
