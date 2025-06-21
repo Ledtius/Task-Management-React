@@ -62,10 +62,10 @@ const TaskForm = ({ taskList, setTaskList }) => {
       </section>
       <div className={taskFormStyles.alertSection}>
         {showAlert && (
-          <span className={taskFormStyles.alert}>Esta tarea ya existe</span>
+          <small className={taskFormStyles.alert}>Esta tarea ya existe</small>
         )}
         {showAlertFalsy && (
-          <span className={taskFormStyles.alert}>Ingrese un valor valido</span>
+          <small className={taskFormStyles.alert}>Ingrese un valor valido</small>
         )}
       </div>
     </form>

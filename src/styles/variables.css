@@ -42,6 +42,11 @@
   --padding-btn: 0.8rem;
   --padding-input: 1.1rem;
   --padding: 2rem;
+
+  /* Tamaños */
+
+  --alert-size: 10px;
+
   /* Utilidad */
   --color-white: #fff;
 

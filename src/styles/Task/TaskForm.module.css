@@ -60,10 +60,13 @@
   color: var(--color-bg);
 }
 .alertSection {
-  height: 2.6rem;
+  height: 2rem;
   width: var(--flex-width);
+  display: flex;
+  align-items: center;
 }
 .alert {
   font-weight: 500;
+  font-size: var(--alert-size);
   color: var(--color-text-error);
 }
