@@ -7,6 +7,7 @@
 
   /* Textos */
   --color-text-primary: #2e2e2e;
+  --color-text-secondary: #212529;
   --color-text-input: #1f1f1f;
   --color-text-tooltip: #2e2e2e;
   --color-text-description-placeholder: #a9a9a9;
@@ -40,6 +41,7 @@
 
   --padding-btn: 0.8rem;
   --padding-input: 1.1rem;
+  --padding: 2rem;
   /* Utilidad */
   --color-white: #fff;
 
