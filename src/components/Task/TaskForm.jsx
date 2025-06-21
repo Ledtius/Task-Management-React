@@ -53,6 +53,7 @@ const TaskForm = ({ taskList, setTaskList }) => {
           className={taskFormStyles.input}
           onChange={handleInput}
           type="text"
+          placeholder="Digita tu tarea aqui"
           value={name}
         />
         <button className={taskFormStyles.btn}>

@@ -22,6 +22,14 @@
   padding-right: 41.6px;
 }
 
+.input::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.input:focus {
+  box-shadow: var(--shadow-focus);
+}
+
 .btn {
   position: absolute;
   right: 0;
@@ -34,9 +42,6 @@
   box-shadow: var(--shadow-btn);
   cursor: pointer;
   transition: 0.4s all ease;
-}
-.input:focus {
-  box-shadow: var(--shadow-focus);
 }
 
 .form:focus-within .btn {
