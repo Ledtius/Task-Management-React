@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import taskFormStyles from "../../styles/Task/TaskForm.module.css";
 
+import { SendIcon } from "lucide-react";
+
 const TaskForm = ({ taskList, setTaskList }) => {
   const [task, setTask] = useState({
     id: "",
@@ -46,16 +48,25 @@ const TaskForm = ({ taskList, setTaskList }) => {
 
   return (
     <form className={taskFormStyles.form} onSubmit={handleForm}>
-      <section>
-        <input onChange={handleInput} type="text" value={name} />
-        <button>Enviar</button>
+      <section className={taskFormStyles.inputBtn}>
+        <input
+          className={taskFormStyles.input}
+          onChange={handleInput}
+          type="text"
+          value={name}
+        />
+        <button className={taskFormStyles.btn}>
+          <SendIcon className={taskFormStyles.icon} />
+        </button>
       </section>
-      {showAlert && (
-        <span>
-          La tarea "{name}" ya existe. Por favor ingresa una tarea diferente.
-        </span>
-      )}
-      {showAlertFalsy && <span>Ingrese un valor valido</span>}
+      <div className={taskFormStyles.alertSection}>
+        {showAlert && (
+          <span className={taskFormStyles.alert}>Esta tarea ya existe</span>
+        )}
+        {showAlertFalsy && (
+          <span className={taskFormStyles.alert}>Ingrese un valor valido</span>
+        )}
+      </div>
     </form>
   );
 };

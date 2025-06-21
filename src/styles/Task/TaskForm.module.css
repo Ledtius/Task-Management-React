@@ -1,0 +1,64 @@
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputBtn {
+  display: flex;
+  align-items: center;
+  width: var(--flex-width);
+  position: relative;
+}
+
+.input {
+  border-radius: var(--border-radius-btn);
+  border: 1px solid var(--color-bg-input);
+  background-color: var(--color-bg-input);
+  padding: var(--padding-input);
+  width: 100%;
+  box-shadow: var(--shadow-input);
+  padding-right: 41.6px;
+}
+
+.btn {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-bg-send);
+  border-radius: var(--border-radius-btn);
+  border: 1px solid var(--color-bg-send);
+  padding: var(--padding-btn);
+  box-shadow: var(--shadow-btn);
+  cursor: pointer;
+  transition: 0.4s all ease;
+}
+.input:focus {
+  box-shadow: var(--shadow-focus);
+}
+
+.form:focus-within .btn {
+  box-shadow: var(--shadow-focus);
+}
+
+.btn:hover {
+  background-color: var(--hover-send-btn);
+}
+
+.btn:active {
+  transform: scale(1.1);
+}
+
+.icon {
+  color: var(--color-bg);
+}
+.alertSection {
+  height: 2.6rem;
+  width: var(--flex-width);
+}
+.alert {
+  font-weight: 500;
+  color: var(--color-text-error);
+}
