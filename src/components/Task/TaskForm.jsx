@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useEffect } from "react";
+
+import taskFormStyles from "../../styles/Task/TaskForm.module.css";
 
 const TaskForm = ({ taskList, setTaskList }) => {
   const [task, setTask] = useState({
@@ -44,7 +45,7 @@ const TaskForm = ({ taskList, setTaskList }) => {
   };
 
   return (
-    <form onSubmit={handleForm}>
+    <form className={taskFormStyles.form} onSubmit={handleForm}>
       <section>
         <input onChange={handleInput} type="text" value={name} />
         <button>Enviar</button>
