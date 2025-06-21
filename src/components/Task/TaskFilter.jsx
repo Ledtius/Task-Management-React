@@ -1,8 +1,13 @@
-import filterStyles from "../../styles/Task/TaskFilter.module.css";
+import taskFilterStyles from "../../styles/Task/TaskFilter.module.css";
 
 import { ListTodo, LayoutList, ListChecks, Search } from "lucide-react";
 
-const TaskFilter = ({ setListState, filterInput, setFilterInput }) => {
+const TaskFilter = ({
+  listState,
+  setListState,
+  filterInput,
+  setFilterInput,
+}) => {
   const handleBtnIdValue = (e) => {
     const btnIdValue = e.target.id;
     setListState(btnIdValue);
@@ -17,23 +22,74 @@ const TaskFilter = ({ setListState, filterInput, setFilterInput }) => {
     setFilterInput(inputValue);
   };
 
+  const handleStylesAll = () => {
+    if (listState === "all") {
+      return {
+        transform: "scale(1.1)",
+        boxShadow: "0px 2px 10px var(--color-bg-all)",
+      };
+    }
+  };
+
+  const handleStylesIncom = () => {
+    if (listState === "incomplete") {
+      return {
+        transform: "scale(1.1)",
+        boxShadow: "0px 2px 10px var(--color-bg-incomplete)",
+      };
+    }
+  };
+
+  const handleStylesComp = () => {
+    if (listState === "complete") {
+      return {
+        transform: "scale(1.1)",
+        boxShadow: "0px 2px 10px var(--color-bg-completed)",
+      };
+    }
+  };
+
   return (
-    <section>
-      <nav>
-        <button id="all" onClick={handleBtnIdValue}>
-          <ListTodo />
+    <section className={taskFilterStyles.filter}>
+      <nav className={taskFilterStyles.nav}>
+        <button
+          className={taskFilterStyles.filterBtn}
+          id="all"
+          style={handleStylesAll()}
+          onClick={handleBtnIdValue}
+        >
+          <ListTodo className={taskFilterStyles.icon} />
+          Todas
         </button>
-        <button id="incomplete" onClick={handleBtnIdValue}>
-          <LayoutList />
+        <button
+          className={taskFilterStyles.filterBtn}
+          id="incomplete"
+          style={handleStylesIncom()}
+          onClick={handleBtnIdValue}
+        >
+          <LayoutList className={taskFilterStyles.icon} />
+          Incompletas
         </button>
-        <button id="complete" onClick={handleBtnIdValue}>
-          <ListChecks />
+        <button
+          className={taskFilterStyles.filterBtn}
+          id="complete"
+          style={handleStylesComp()}
+          onClick={handleBtnIdValue}
+        >
+          <ListChecks className={taskFilterStyles.icon} />
+          Completas
         </button>
       </nav>
-      <form onSubmit={handleForm}>
-        <input type="text" value={filterInput} onChange={handleInput} />
-        <button>
-          <Search />
+      <form className={taskFilterStyles.form} onSubmit={handleForm}>
+        <input
+          className={taskFilterStyles.input}
+          type="text"
+          placeholder="Escribe la tarea a buscar"
+          value={filterInput}
+          onChange={handleInput}
+        />
+        <button className={taskFilterStyles.searchBtn}>
+          <Search className={taskFilterStyles.iconSearch} />
         </button>
       </form>
     </section>
