@@ -60,7 +60,7 @@
   color: var(--color-bg);
 }
 .alertSection {
-  height: 2rem;
+  height: 3rem;
   width: var(--flex-width);
   display: flex;
   align-items: center;
