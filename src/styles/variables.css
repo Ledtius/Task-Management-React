@@ -26,9 +26,10 @@
   --color-bg-delete-description: #dc3545;
   --color-bg-delete-task: #b22222;
 
-  /* Íconos */
+  /* Tarea hover */
   --color-icon-edit: #6b7280;
   --color-icon-add: #8b5cf6;
+  --color-text-descripmsg: #212529;
 
   /* Tooltips */
   --color-bg-tooltip: #b0b0b0;

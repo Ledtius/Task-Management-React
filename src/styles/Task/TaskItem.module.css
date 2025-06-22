@@ -1,0 +1,105 @@
+.taskItem {
+  width: var(--flex-width);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+  padding: var(--padding);
+  background-color: var(--color-text-filter);
+  border-radius: var(--border-radius-btn);
+  /* flex-direction: column; */
+}
+
+.checkBox {
+}
+
+.deleteBtn {
+}
+
+.deleteIcon {
+}
+
+.nameDescrip {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 20rem;
+  overflow-x: auto;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+}
+
+.header:hover .editBtn {
+  opacity: 1;
+  transform: scale(0.95);
+}
+.header:hover .taskName {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+.taskName {
+  opacity: 1;
+  margin: 0;
+  width: fit-content;
+  max-width: 16rem;
+  overflow-x: auto;
+  color: var(--color-text-primary);
+  transition: all 0.4s ease-in;
+}
+
+.editBtn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.4s ease-in;
+}
+
+.editIcon {
+  stroke: var(--color-icon-edit);
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--padding);
+  justify-content: space-between;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.4s ease-in;
+}
+
+.footer:hover {
+  opacity: 1;
+  transform: scale(0.95);
+}
+
+.descripMsg {
+  color: var(--color-text-descripmsg);
+}
+
+.addDescripBtn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.addDescripIcon {
+  stroke: var(--color-icon-add);
+}

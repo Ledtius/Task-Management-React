@@ -1,11 +1,11 @@
-import { useEffect } from "react";
 import TaskItem from "./TaskItem";
+import taskListStyles from "../../styles/Task/TaskList.module.css";
 
 const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
   if (listState === "all") {
     if (!filterInput) {
       return (
-        <ul>
+        <ul className={taskListStyles.list}>
           {taskList.map(({ id, name, description, state }) => (
             <TaskItem
               idTask={id}

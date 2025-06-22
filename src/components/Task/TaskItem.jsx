@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { LucideEdit, CirclePlus, Trash2 } from "lucide-react";
+import taskItemStyles from "../../styles/Task/TaskItem.module.css";
 
 const TaskItem = ({
   idTask,
@@ -25,8 +27,6 @@ const TaskItem = ({
   const [descripInput, setDescripInput] = useState(taskDescrip);
 
   const [editDescrip, setEditDescrip] = useState("");
-
-  /* Agregue esto porque el editDescrip al la primera edicion no me tomaba el valor del descripInput, me toco utilizar el useEffect, pero la verdad no entiendo porque tube la necesidad de hacerlo, acaso no se remonta el componente cada vez que hago un set...()? por ahora no entiendo, dejare esta duda aqui (ahora veo que si uso escribo en el setEditdescrip(taskDescrip) no me funciona, sera que tengo que utilizar un useEffect para el tambien?, claro si en este caso lo utilizara en vez de el editDescrip?)  */
 
   useEffect(() => {
     setEditDescrip(descripInput);
@@ -225,14 +225,19 @@ const TaskItem = ({
 
   return (
     <li>
-      <article>
+      <article className={taskItemStyles.taskItem}>
         <input type="checkbox" onChange={handleCheckbox} checked={taskState} />
-        <section>
-          <header>
-            <span>{taskName}</span>
+        <section className={taskItemStyles.nameDescrip}>
+          <header className={taskItemStyles.header}>
+            <h3 className={taskItemStyles.taskName}>{taskName}</h3>
 
             {showEditTaskBtn && (
-              <button onClick={handleEditTaskBtn}>Editar</button>
+              <button
+                className={taskItemStyles.editBtn}
+                onClick={handleEditTaskBtn}
+              >
+                <LucideEdit />
+              </button>
             )}
           </header>
           {/* Panel cuando das a editar */}
@@ -258,9 +263,16 @@ const TaskItem = ({
           )}
           {/* Añadir descripción */}
           {showAddDescripBtn && (
-            <footer>
-              <small>Añadir descripción</small>
-              <button onClick={handleAddDescripBtn}>Añadir</button>
+            <footer className={taskItemStyles.footer}>
+              <small className={taskItemStyles.descripMsg}>
+                Añadir descripción
+              </small>
+              <button
+                className={taskItemStyles.addDescripBtn}
+                onClick={handleAddDescripBtn}
+              >
+                <CirclePlus className={taskItemStyles.addDescripIcon} />
+              </button>
             </footer>
           )}
           {/* Panel para escribir la descripción */}
@@ -286,18 +298,20 @@ const TaskItem = ({
           )}
 
           {/* Cuando se añada la descripción */}
-          <div>
-            {showDescripMsg && <small>{taskDescrip}</small>}
-            <nav>
-              {showDescripMsg && (
-                <button onClick={handleEditDescripBtn}>Editar</button>
-              )}
-              {showDescripMsg && (
-                <button onClick={handleEditDescripDeleteBtn}>Eliminar</button>
-              )}
-            </nav>
-          </div>
-
+          {showDescripMsg && (
+            <div>
+              <small>{taskDescrip}</small>
+              <nav>
+                {/* Sobran los showDescripMsg */}
+                {showDescripMsg && (
+                  <button onClick={handleEditDescripBtn}>Editar</button>
+                )}
+                {showDescripMsg && (
+                  <button onClick={handleEditDescripDeleteBtn}>Eliminar</button>
+                )}
+              </nav>
+            </div>
+          )}
           {/* Panel cuando das a editar */}
           {showEditDescrip && (
             <div>
