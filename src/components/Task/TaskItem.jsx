@@ -226,7 +226,16 @@ const TaskItem = ({
   return (
     <li>
       <article className={taskItemStyles.taskItem}>
-        <input type="checkbox" onChange={handleCheckbox} checked={taskState} />
+        <label className={taskItemStyles.checkboxContent}>
+          <input
+            type="checkbox"
+            onChange={handleCheckbox}
+            checked={taskState}
+            className={taskItemStyles.checkbox}
+          />
+          <span className={taskItemStyles.checkmark}></span>
+        </label>
+
         <section className={taskItemStyles.nameDescrip}>
           <header className={taskItemStyles.header}>
             <h3 className={taskItemStyles.taskName}>{taskName}</h3>
@@ -331,7 +340,12 @@ const TaskItem = ({
             </div>
           )}
         </section>
-        <button onClick={handleTaskDeleteBtn}>Eliminar</button>
+        <button
+          className={taskItemStyles.deleteBtn}
+          onClick={handleTaskDeleteBtn}
+        >
+          <Trash2 className={taskItemStyles.deleteIcon} />
+        </button>
       </article>
     </li>
   );
