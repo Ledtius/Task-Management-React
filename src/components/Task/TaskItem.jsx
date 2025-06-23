@@ -18,6 +18,8 @@ const TaskItem = ({
 
   const [showEditTaskBtn, setShowEditTaskBtn] = useState(true);
 
+  const [showTask, setShowTask] = useState(true);
+
   const [showEditTask, setShowEditTask] = useState(false);
 
   const [showAlertEditTaskFalsy, setShowAlertEditTaskFalsy] = useState(false);
@@ -55,6 +57,7 @@ const TaskItem = ({
   const handleEditTaskBtn = () => {
     setShowEditTask(true);
     setShowEditTaskBtn(false);
+    setShowTask(false);
   };
 
   const handleEditTaskInput = (e) => {
@@ -80,6 +83,7 @@ const TaskItem = ({
         );
         setShowEditTaskBtn(true);
         setShowEditTask(false);
+        setShowTask(true);
       } else {
         setTimeout(() => {
           setShowAlertEditTask(false);
@@ -97,6 +101,7 @@ const TaskItem = ({
   const handleEditTaskCancelBtn = () => {
     setShowEditTask(false);
     setShowEditTaskBtn(true);
+    setShowTask(true);
     setTaskInput(taskName);
   };
 
@@ -238,8 +243,9 @@ const TaskItem = ({
 
         <section className={taskItemStyles.nameDescrip}>
           <header className={taskItemStyles.header}>
-            <h3 className={taskItemStyles.taskName}>{taskName}</h3>
-
+            {showTask && (
+              <h3 className={taskItemStyles.taskName}>{taskName}</h3>
+            )}
             {showEditTaskBtn && (
               <button
                 className={taskItemStyles.editBtn}
@@ -251,21 +257,32 @@ const TaskItem = ({
           </header>
           {/* Panel cuando das a editar */}
           {showEditTask && (
-            <div>
+            <div className={taskItemStyles.editNamePanel}>
               <input
+                className={taskItemStyles.editNamePanelInput}
                 type="text"
                 placeholder={"Editando nombre..."}
                 onChange={handleEditTaskInput}
                 value={taskInput}
               />
               {showAlertEditTask && (
-                <span>
-                  Esta tarea ya existe. Por favor ingresa una tarea diferente.
-                </span>
+                <small className={taskItemStyles.editNamePanelAlert}>
+                  Nombre ya existente
+                </small>
               )}
-              <nav>
-                <button onClick={handleEditTaskAcceptBtn}>Aceptar</button>
-                <button onClick={handleEditTaskCancelBtn}>Cancelar</button>
+              <nav className={taskItemStyles.editNamePanelAC}>
+                <button
+                  className={taskItemStyles.editNamePanelAccept}
+                  onClick={handleEditTaskAcceptBtn}
+                >
+                  Aceptar
+                </button>
+                <button
+                  className={taskItemStyles.editNamePanelCancel}
+                  onClick={handleEditTaskCancelBtn}
+                >
+                  Cancelar
+                </button>
               </nav>
               {showAlertEditTaskFalsy && <span>Ingrese un valor valido</span>}
             </div>
