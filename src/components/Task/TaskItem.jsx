@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LucideEdit, CirclePlus, Trash2, Save, Ban } from "lucide-react";
+import { LucideEdit, CirclePlus, Trash2, Save, Ban, Send } from "lucide-react";
 import taskItemStyles from "../../styles/Task/TaskItem.module.css";
 
 const TaskItem = ({
@@ -242,15 +242,12 @@ const TaskItem = ({
         </label>
 
         <section className={taskItemStyles.nameDescrip}>
-          <header className={taskItemStyles.header}>
+          <header className={taskItemStyles.header} onClick={handleEditTaskBtn}>
             {showTask && (
               <h3 className={taskItemStyles.taskName}>{taskName}</h3>
             )}
             {showEditTaskBtn && (
-              <button
-                className={taskItemStyles.editBtn}
-                onClick={handleEditTaskBtn}
-              >
+              <button className={taskItemStyles.editBtn}>
                 <LucideEdit />
               </button>
             )}
@@ -297,37 +294,52 @@ const TaskItem = ({
           )}
           {/* Añadir descripción */}
           {showAddDescripBtn && (
-            <footer className={taskItemStyles.footer}>
+            <footer
+              className={taskItemStyles.footer}
+              onClick={handleAddDescripBtn}
+            >
               <small className={taskItemStyles.descripMsg}>
                 Añadir descripción
               </small>
-              <button
-                className={taskItemStyles.addDescripBtn}
-                onClick={handleAddDescripBtn}
-              >
+              <button className={taskItemStyles.addDescripBtn}>
                 <CirclePlus className={taskItemStyles.addDescripIcon} />
               </button>
             </footer>
           )}
           {/* Panel para escribir la descripción */}
           {showAddDecrip && (
-            <div>
+            <div className={taskItemStyles.editAddPanel}>
               <input
+                className={taskItemStyles.editAddPanelInput}
                 type="text"
                 placeholder="Escriba el nombre de la descripción"
                 onChange={handleAddDescripInput}
                 value={descripInput}
               />
 
-              <nav>
-                <button onClick={handleAddDescripAddBtn}>Añadir Descrip</button>
-                <button onClick={handleAddDescripCancelBtn}>
-                  Cancel Descrip
+              {showAlertAddDescrip && (
+                <div className={taskItemStyles.editAddPanelAlertSection}>
+                  <small className={taskItemStyles.editAddPanelAlert}>
+                    Debes de ingresar una descripción valida
+                  </small>
+                </div>
+              )}
+              <nav className={taskItemStyles.editAddPanelAC}>
+                <button
+                  className={taskItemStyles.editAddPanelAccept}
+                  onClick={handleAddDescripAddBtn}
+                >
+                  <Send className={taskItemStyles.editAddPanelAcceptBtnIcon} />
+                  Añadir
+                </button>
+                <button
+                  className={taskItemStyles.editAddPanelCancel}
+                  onClick={handleAddDescripCancelBtn}
+                >
+                  <Ban className={taskItemStyles.editAddPanelCancelBtnIcon} />
+                  Cancelar
                 </button>
               </nav>
-              {showAlertAddDescrip && (
-                <span>Debes de ingresar una descripción valida</span>
-              )}
             </div>
           )}
 
@@ -336,32 +348,45 @@ const TaskItem = ({
             <div>
               <small>{taskDescrip}</small>
               <nav>
-                {/* Sobran los showDescripMsg */}
-                {showDescripMsg && (
-                  <button onClick={handleEditDescripBtn}>Editar</button>
-                )}
-                {showDescripMsg && (
-                  <button onClick={handleEditDescripDeleteBtn}>Eliminar</button>
-                )}
+                <button onClick={handleEditDescripBtn}>Editar</button>
+
+                <button onClick={handleEditDescripDeleteBtn}>Eliminar</button>
               </nav>
             </div>
           )}
           {/* Panel cuando das a editar */}
           {showEditDescrip && (
-            <div>
+            <div className={taskItemStyles.editAddPanel}>
               <input
+                className={taskItemStyles.editAddPanelInput}
                 type="text"
                 placeholder={"Editando descripción..."}
                 value={editDescrip}
                 onChange={handleEditDescripInput}
               />
-              <nav>
-                <button onClick={handleEditDescripAcceptBtn}>Aceptar</button>
-                <button onClick={handleEditDescripCancelBtn}>Cancelar</button>
-              </nav>
               {showAlertEditDescrip && (
-                <span>Debes de ingresar una descripción valida</span>
+                <div className={taskItemStyles.editAddPanelAlertSection}>
+                  <small className={taskItemStyles.editAddPanelAlert}>
+                    Debes de ingresar una descripción valida
+                  </small>
+                </div>
               )}
+              <nav className={taskItemStyles.editAddPanelAC}>
+                <button
+                  className={taskItemStyles.editAddPanelAccept}
+                  onClick={handleEditDescripAcceptBtn}
+                >
+                  <Save className={taskItemStyles.editAddPanelAcceptBtnIcon} />
+                  Guardar
+                </button>
+                <button
+                  className={taskItemStyles.editAddPanelCancel}
+                  onClick={handleEditDescripCancelBtn}
+                >
+                  <Ban className={taskItemStyles.editAddPanelCancelBtnIcon} />
+                  Cancelar
+                </button>
+              </nav>
             </div>
           )}
         </section>
