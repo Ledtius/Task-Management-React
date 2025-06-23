@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LucideEdit, CirclePlus, Trash2 } from "lucide-react";
+import { LucideEdit, CirclePlus, Trash2, Save, Ban } from "lucide-react";
 import taskItemStyles from "../../styles/Task/TaskItem.module.css";
 
 const TaskItem = ({
@@ -257,34 +257,42 @@ const TaskItem = ({
           </header>
           {/* Panel cuando das a editar */}
           {showEditTask && (
-            <div className={taskItemStyles.editNamePanel}>
+            <div className={taskItemStyles.editAddPanel}>
               <input
-                className={taskItemStyles.editNamePanelInput}
+                className={taskItemStyles.editAddPanelInput}
                 type="text"
                 placeholder={"Editando nombre..."}
                 onChange={handleEditTaskInput}
                 value={taskInput}
               />
-              {showAlertEditTask && (
-                <small className={taskItemStyles.editNamePanelAlert}>
-                  Nombre ya existente
-                </small>
-              )}
-              <nav className={taskItemStyles.editNamePanelAC}>
+              <div className={taskItemStyles.editAddPanelAlertSection}>
+                {showAlertEditTask && (
+                  <small className={taskItemStyles.editAddPanelAlert}>
+                    Nombre ya existente
+                  </small>
+                )}
+                {showAlertEditTaskFalsy && (
+                  <small className={taskItemStyles.editAddPanelAlert}>
+                    Ingrese un valor valido
+                  </small>
+                )}
+              </div>
+              <nav className={taskItemStyles.editAddPanelAC}>
                 <button
-                  className={taskItemStyles.editNamePanelAccept}
+                  className={taskItemStyles.editAddPanelAccept}
                   onClick={handleEditTaskAcceptBtn}
                 >
+                  <Save className={taskItemStyles.editAddPanelIconBtnAccept} />
                   Aceptar
                 </button>
                 <button
-                  className={taskItemStyles.editNamePanelCancel}
+                  className={taskItemStyles.editAddPanelCancel}
                   onClick={handleEditTaskCancelBtn}
                 >
+                  <Ban className={taskItemStyles.editAddPanelIconBtnCancel} />
                   Cancelar
                 </button>
               </nav>
-              {showAlertEditTaskFalsy && <span>Ingrese un valor valido</span>}
             </div>
           )}
           {/* Añadir descripción */}

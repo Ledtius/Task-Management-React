@@ -108,11 +108,8 @@
 .taskName {
   opacity: 1;
   margin: 0;
-  max-width: fit-content;
-  /* height: 40rem; */
-  text-wrap: wrap;
+  /* text-align: justify; */
   scrollbar-width: thin;
-  /* width: fit-content; */
   max-width: 16rem;
   overflow-x: auto;
   word-break: break-word;
@@ -135,37 +132,104 @@
   stroke: var(--color-icon-edit);
 }
 
-.editNamePanel {
+.editAddPanel {
+  z-index: 2;
+  /* box-shadow:  0.5rem 0.2rem 1rem rgba(0, 0, 0, 0.584); */
+  box-shadow: var(--shadow-tooltip);
   padding: 1rem;
   border-radius: 1rem;
+  height: 12rem;
   background-color: var(--color-bg-input-edit);
-  width: 100%;
+  width: 110%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
-  gap: 1rem;
 }
-.editNamePanelInput {
+.editAddPanelInput {
+  /* margin-bottom: 2rem; */
   border-radius: var(--border-radius-btn);
   width: 100%;
+
   border: var(--border-input);
   padding: var(--padding-input-edit);
 }
 
-.editNamePanelAlert {
-  font-size: var(--alert-size);
+.editAddPanelInput::placeholder {
+  color: var(--color-text-placeholder);
 }
-.editNamePanelAC {
+
+.editAddPanelAlertSection {
+  /* width: 100%; */
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+.editAddPanelAlert {
+  font-size: var(--alert-size);
+  color: var(--color-text-error);
+}
+
+.editAddPanelAC {
   width: 100%;
   display: flex;
   align-items: center;
+  gap: 1rem;
   justify-content: space-between;
 }
 
-.editNamePanelAccept {
+.editAddPanelAccept {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-btn-icon);
+  border-radius: var(--border-radius-btn);
+  border: 1px solid var(--color-bg-save);
+  background-color: var(--color-bg-save);
+  padding: var(--padding-btn3);
+  font-weight: 600;
+  color: var(--color-text-filter);
+  cursor: pointer;
+  transition: all 0.4s ease;
 }
 
-.editNamePanelCancel {
+.editAddPanelAccept:hover {
+  color: var(--color-bg-save);
+  background-color: var(--color-text-filter);
+}
+
+.editAddPanelIconBtnAccept {
+  stroke: var(--color-text-filter);
+  transition: all 0.4s ease;
+}
+.editAddPanelAccept:hover .editAddPanelIconBtnAccept {
+  stroke: var(--color-bg-save);
+}
+
+.editAddPanelCancel {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-btn-icon);
+  border-radius: var(--border-radius-btn);
+  border: 1px solid var(--color-bg-cancel);
+  background-color: var(--color-bg-cancel);
+  padding: var(--padding-btn3);
+  font-weight: 600;
+  color: var(--color-text-filter);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.editAddPanelCancel:hover {
+  background-color: var(--color-text-filter);
+  color: var(--color-bg-cancel);
+}
+
+.editAddPanelIconBtnCancel {
+  stroke: var(--color-text-filter);
+  transition: all 0.4s ease;
+}
+
+.editAddPanelCancel:hover .editAddPanelIconBtnCancel {
+  stroke: var(--color-bg-cancel);
 }
 
 .footer {
