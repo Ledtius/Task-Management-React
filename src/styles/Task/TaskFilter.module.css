@@ -20,7 +20,7 @@
   background-color: red;
   border-radius: var(--border-radius-btn);
   padding: 0.4rem 0.8rem;
-  gap: 0.4rem;
+  gap: var(--gap-btn-icon);
   color: var(--color-text-filter);
   cursor: pointer;
   transition: all 0.4s ease-in;
