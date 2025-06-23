@@ -1,0 +1,43 @@
+.section {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: row-reverse;
+  position: relative;
+  height: 4rem;
+}
+.deleteBtn {
+  position: absolute;
+  right: -5rem;
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--padding);
+  padding: var(--padding-btn);
+  background-color: var(--color-bg-delete-task);
+  box-shadow: var(--shadow-btn);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.deleteBtn:hover {
+  transform: scale(1.1);
+  border: 1px solid var(--color-bg-delete-task);
+  background-color: var(--color-text-filter);
+  box-shadow: var(--shadow-hover-delete-task);
+}
+
+.deleteBtn:hover .deleteIcon {
+  stroke: var(--hover-delete-task);
+  transition: all 0.4s ease;
+}
+
+.deleteIcon {
+  stroke: var(--color-text-filter);
+}
+
+@media (max-width: 768px) {
+  .deleteBtn {
+    right: 0;
+  }
+}
