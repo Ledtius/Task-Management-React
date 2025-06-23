@@ -25,7 +25,7 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
       );
 
       return (
-        <ul>
+        <ul className={taskListStyles.list}>
           {taskListFilterAll.map(({ id, name, description, state }) => (
             <TaskItem
               idTask={id}
@@ -44,7 +44,7 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
     const taskListIncomplete = taskList.filter((task) => task.state === false);
     if (!filterInput) {
       return (
-        <ul>
+        <ul className={taskListStyles.list}>
           {taskListIncomplete.map(({ id, name, description, state }) => {
             return (
               <TaskItem
@@ -66,7 +66,7 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
       );
 
       return (
-        <ul>
+        <ul className={taskListStyles.list}>
           {taskListIncompleteFilter.map(({ id, name, description, state }) => {
             return (
               <TaskItem
@@ -87,7 +87,7 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
     const taskListComplete = taskList.filter((task) => task.state === true);
     if (!filterInput) {
       return (
-        <ul>
+        <ul className={taskListStyles.list}>
           {taskListComplete.map(({ id, name, description, state }) => {
             if (state === true)
               return (
@@ -110,7 +110,7 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
       );
 
       return (
-        <ul>
+        <ul className={taskListStyles.list}>
           {taskListCompleteFilter.map(({ id, name, description, state }) => {
             if (state === true)
               return (
