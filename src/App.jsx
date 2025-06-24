@@ -10,6 +10,7 @@ import TaskFilter from "./components/Task/TaskFilter";
 import TaskList from "./components/Task/TaskList";
 
 import TaskDelete from "./components/Task/TaskDelete";
+import appStyles from "./styles/App.module.css";
 
 import Footer from "./components/Layout/Footer";
 
@@ -31,26 +32,31 @@ const App = () => {
 
   return (
     <>
-      <Header />
-      <TaskForm taskList={taskList} setTaskList={setTaskList} />
-      <TaskFilter
-        listState={listState}
-        setListState={setListState}
-        filterInput={filterInput}
-        setFilterInput={setFilterInput}
-      />
-      <TaskList
-        taskList={taskList}
-        setTaskList={setTaskList}
-        listState={listState}
-        filterInput={filterInput}
-      />
-      <TaskDelete
-        taskList={taskList}
-        setTaskList={setTaskList}
-        listState={listState}
-      />
-      <Footer />
+      <section className={appStyles.app}>
+        <Header />
+        <section className={appStyles.body}>
+          <TaskForm taskList={taskList} setTaskList={setTaskList} />
+          <TaskFilter
+            listState={listState}
+            setListState={setListState}
+            filterInput={filterInput}
+            setFilterInput={setFilterInput}
+          />
+          <TaskList
+            taskList={taskList}
+            setTaskList={setTaskList}
+            listState={listState}
+            filterInput={filterInput}
+          />
+          <TaskDelete
+            taskList={taskList}
+            setTaskList={setTaskList}
+            listState={listState}
+          />
+        </section>
+
+        <Footer />
+      </section>
     </>
   );
 };
