@@ -329,7 +329,9 @@ const TaskItem = ({
                   className={taskItemStyles.editAddPanelAccept}
                   onClick={handleAddDescripAddBtn}
                 >
-                  <Send className={taskItemStyles.editAddPanelAcceptBtnIcon} />
+                  <CirclePlus
+                    className={taskItemStyles.editAddPanelAcceptBtnIcon}
+                  />
                   Añadir
                 </button>
                 <button
@@ -345,12 +347,26 @@ const TaskItem = ({
 
           {/* Cuando se añada la descripción */}
           {showDescripMsg && (
-            <div>
-              <small>{taskDescrip}</small>
-              <nav>
-                <button onClick={handleEditDescripBtn}>Editar</button>
+            <div className={taskItemStyles.taskDescripSection}>
+              <small className={taskItemStyles.taskDescrip}>
+                {taskDescrip}
+              </small>
+              <nav className={taskItemStyles.taskDescripEdDe}>
+                <button
+                  className={taskItemStyles.taskDescripEdit}
+                  onClick={handleEditDescripBtn}
+                >
+                  <LucideEdit
+                    className={taskItemStyles.taskDescripEditBtnIcon}
+                  />
+                </button>
 
-                <button onClick={handleEditDescripDeleteBtn}>Eliminar</button>
+                <button
+                  className={taskItemStyles.taskDescripDelete}
+                  onClick={handleEditDescripDeleteBtn}
+                >
+                  <Trash2 className={taskItemStyles.taskDescripDeleteBtnIcon} />
+                </button>
               </nav>
             </div>
           )}
