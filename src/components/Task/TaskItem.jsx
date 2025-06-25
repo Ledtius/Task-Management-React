@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { LucideEdit, CirclePlus, Trash2, Save, Ban } from "lucide-react";
 
-import { Tooltip } from "react-tooltip";
+// import { Tooltip } from "react-tooltip";
 
 import taskItemStyles from "../../styles/Task/TaskItem.module.css";
 
@@ -245,13 +245,11 @@ const TaskItem = ({
         </label>
 
         <section className={taskItemStyles.nameDescrip}>
-          <header className={taskItemStyles.header} onClick={handleEditTaskBtn}>
-            <Tooltip
-              anchorSelect={`.${taskItemStyles.header}`}
-              content="Editar  tarea"
-              place="right"
-              type="success"
-            />
+          <header
+            className={taskItemStyles.header}
+            onClick={handleEditTaskBtn}
+            title="Tooltip"
+          >
             {showTask && (
               <h3 className={taskItemStyles.taskName}>{taskName}</h3>
             )}
