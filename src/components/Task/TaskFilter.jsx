@@ -57,6 +57,7 @@ const TaskFilter = ({
           id="all"
           style={handleStylesAll()}
           onClick={handleBtnIdValue}
+          title="Filtro de todas las tareas (completas e incompletas)"
         >
           <ListTodo className={taskFilterStyles.icon} />
           Todas
@@ -66,6 +67,7 @@ const TaskFilter = ({
           id="incomplete"
           style={handleStylesIncom()}
           onClick={handleBtnIdValue}
+          title="Filtro de tareas incompletadas"
         >
           <LayoutList className={taskFilterStyles.icon} />
           Incompletas
@@ -75,6 +77,7 @@ const TaskFilter = ({
           id="complete"
           style={handleStylesComp()}
           onClick={handleBtnIdValue}
+          title="Filtro de tareas completadas"
         >
           <ListChecks className={taskFilterStyles.icon} />
           Completas
