@@ -10,7 +10,6 @@ import TaskFilter from "./components/Task/TaskFilter";
 import TaskList from "./components/Task/TaskList";
 
 import TaskDelete from "./components/Task/TaskDelete";
-import appStyles from "./styles/App.module.css";
 
 import Footer from "./components/Layout/Footer";
 
