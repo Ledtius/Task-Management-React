@@ -246,16 +246,20 @@ const TaskItem = ({
         </label>
 
         <section className={taskItemStyles.nameDescrip}>
-          <header
-            className={taskItemStyles.header}
-            onClick={handleEditTaskBtn}
-            title="Editar nombre de tarea"
-          >
+          <header className={taskItemStyles.header} onClick={handleEditTaskBtn}>
             {showTask && (
-              <h3 className={taskItemStyles.taskName}>{taskName}</h3>
+              <h3
+                className={taskItemStyles.taskName}
+                title="Nombre de la tarea"
+              >
+                {taskName}
+              </h3>
             )}
             {showEditTaskBtn && (
-              <button className={taskItemStyles.editBtn}>
+              <button
+                className={taskItemStyles.editBtn}
+                title="Editar nombre de tarea"
+              >
                 <LucideEdit />
               </button>
             )}
@@ -305,7 +309,7 @@ const TaskItem = ({
             <footer
               className={taskItemStyles.footer}
               onClick={handleAddDescripBtn}
-              title="Añadir descripción de tarea"
+              title="Añadir descripción de la tarea"
             >
               <small className={taskItemStyles.descripMsg}>
                 Añadir descripción
