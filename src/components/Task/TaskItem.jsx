@@ -250,6 +250,14 @@ const TaskItem = ({
             {showTask && (
               <h3
                 className={taskItemStyles.taskName}
+                style={
+                  taskState
+                    ? {
+                        textDecoration: "line-through",
+                        textDecorationColor: "#2ecc71",
+                      }
+                    : { textDecoration: "none" }
+                }
                 title="Nombre de la tarea"
               >
                 {taskName}
@@ -292,7 +300,7 @@ const TaskItem = ({
                   onClick={handleEditTaskAcceptBtn}
                 >
                   <Save className={taskItemStyles.editAddPanelIconBtnAccept} />
-                  Aceptar
+                  Guardar
                 </button>
                 <button
                   className={taskItemStyles.editAddPanelCancel}
