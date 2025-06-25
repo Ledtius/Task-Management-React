@@ -17,7 +17,11 @@ const TaskDelete = ({ taskList, setTaskList, listState }) => {
 
   return (
     <section className={taskDeleteStyles.section}>
-      <button className={taskDeleteStyles.deleteBtn} onClick={handleBtn}>
+      <button
+        className={taskDeleteStyles.deleteBtn}
+        onClick={handleBtn}
+        title={`Eliminar tareas de: '${listState}'`}
+      >
         <ListX className={taskDeleteStyles.deleteIcon} />
       </button>
     </section>
