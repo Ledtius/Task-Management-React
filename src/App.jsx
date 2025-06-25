@@ -32,31 +32,27 @@ const App = () => {
 
   return (
     <>
-      <section className={appStyles.app}>
-        <Header />
-        <section className={appStyles.body}>
-          <TaskForm taskList={taskList} setTaskList={setTaskList} />
-          <TaskFilter
-            listState={listState}
-            setListState={setListState}
-            filterInput={filterInput}
-            setFilterInput={setFilterInput}
-          />
-          <TaskList
-            taskList={taskList}
-            setTaskList={setTaskList}
-            listState={listState}
-            filterInput={filterInput}
-          />
-          <TaskDelete
-            taskList={taskList}
-            setTaskList={setTaskList}
-            listState={listState}
-          />
-        </section>
+      <Header />
+      <TaskForm taskList={taskList} setTaskList={setTaskList} />
+      <TaskFilter
+        listState={listState}
+        setListState={setListState}
+        filterInput={filterInput}
+        setFilterInput={setFilterInput}
+      />
+      <TaskList
+        taskList={taskList}
+        setTaskList={setTaskList}
+        listState={listState}
+        filterInput={filterInput}
+      />
+      <TaskDelete
+        taskList={taskList}
+        setTaskList={setTaskList}
+        listState={listState}
+      />
 
-        <Footer />
-      </section>
+      <Footer />
     </>
   );
 };
