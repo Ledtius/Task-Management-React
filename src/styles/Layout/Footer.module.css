@@ -1,6 +1,7 @@
 .footer {
   text-align: center;
-  padding: var(--padding);
+  padding-top: calc(2 * var(--padding));
+  /* padding: var(--padding); */
 }
 
 .small {
