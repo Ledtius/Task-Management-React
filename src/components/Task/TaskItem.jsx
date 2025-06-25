@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { LucideEdit, CirclePlus, Trash2, Save, Ban } from "lucide-react";
 
-// import { Tooltip } from "react-tooltip";
-
 import taskItemStyles from "../../styles/Task/TaskItem.module.css";
 
 const TaskItem = ({
@@ -234,7 +232,10 @@ const TaskItem = ({
   return (
     <li>
       <article className={taskItemStyles.taskItem}>
-        <label className={taskItemStyles.checkboxContent}>
+        <label
+          className={taskItemStyles.checkboxContent}
+          title="Marcar/Desmarcar tarea"
+        >
           <input
             type="checkbox"
             onChange={handleCheckbox}
@@ -248,7 +249,7 @@ const TaskItem = ({
           <header
             className={taskItemStyles.header}
             onClick={handleEditTaskBtn}
-            title="Tooltip"
+            title="Editar nombre de tarea"
           >
             {showTask && (
               <h3 className={taskItemStyles.taskName}>{taskName}</h3>
@@ -304,6 +305,7 @@ const TaskItem = ({
             <footer
               className={taskItemStyles.footer}
               onClick={handleAddDescripBtn}
+              title="Añadir descripción de tarea"
             >
               <small className={taskItemStyles.descripMsg}>
                 Añadir descripción
@@ -319,7 +321,7 @@ const TaskItem = ({
               <input
                 className={taskItemStyles.editAddPanelInput}
                 type="text"
-                placeholder="Escriba el nombre de la descripción"
+                placeholder="Descripción de la tarea"
                 onChange={handleAddDescripInput}
                 value={descripInput}
               />
@@ -355,13 +357,14 @@ const TaskItem = ({
           {/* Cuando se añada la descripción */}
           {showDescripMsg && (
             <div className={taskItemStyles.taskDescripSection}>
-              <small className={taskItemStyles.taskDescrip}>
+              <small className={taskItemStyles.taskDescrip} title="Descripción">
                 {taskDescrip}
               </small>
               <nav className={taskItemStyles.taskDescripEdDe}>
                 <button
                   className={taskItemStyles.taskDescripEdit}
                   onClick={handleEditDescripBtn}
+                  title="Editar descripción"
                 >
                   <LucideEdit
                     className={taskItemStyles.taskDescripEditBtnIcon}
@@ -371,6 +374,7 @@ const TaskItem = ({
                 <button
                   className={taskItemStyles.taskDescripDelete}
                   onClick={handleEditDescripDeleteBtn}
+                  title="Borrar descripción"
                 >
                   <Trash2 className={taskItemStyles.taskDescripDeleteBtnIcon} />
                 </button>
@@ -416,6 +420,7 @@ const TaskItem = ({
         <button
           className={taskItemStyles.deleteBtn}
           onClick={handleTaskDeleteBtn}
+          title="Eliminar tarea"
         >
           <Trash2 className={taskItemStyles.deleteIcon} />
         </button>
