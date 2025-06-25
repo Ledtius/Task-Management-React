@@ -23,10 +23,13 @@ Esta es una aplicación web construida con ReactJS que permite gestionar tareas 
 - Hooks: `useState`, `useEffect`
 - `useEffect` + `localStorage`
 - Inputs controlados (`value`)
-- Lifting state up
-- Renderizado condicional (`&&`)
+- Lifting state up (Hijos alteran el estado del padre)
+
 - Listas con `map`, `filter`, `some`
 - `crypto.randomUUID()` para generar IDs únicos
+-	Lazy initialization, para iniciar la variable de estado con valor de localStorage
+
+- Renderizado y estilos condicionales
 - Módulos CSS (`CSS Modules`)
 - JavaScript moderno:
   - `Destructuring`
@@ -34,7 +37,13 @@ Esta es una aplicación web construida con ReactJS que permite gestionar tareas 
 
 ---
 
-### 🔧 Posibles mejoras
+### 📚 Librerias utilizadas
+
+- react lucide ("Iconos")
+
+---
+
+### 🔧 Posibles mejoras a futuro
 
 - Barra de progreso
 - Tareas con prioridad (alta, media, baja)
@@ -44,16 +53,16 @@ Esta es una aplicación web construida con ReactJS que permite gestionar tareas 
 
 ---
 
-### 📚 Contexto del proyecto
+### 📖 Contexto del proyecto
 
 Antes había comenzado este mismo proyecto en otro repositorio, pero decidí pausarlo al notar que necesitaba reforzar mi base de conocimientos en React y JavaScript moderno.
 
 Luego se hizo un **Todo List** para practicar los fundamentos necesarios que aplicaría en el proyecto.
 
 
-- 🧪 Primer repositorio de pruebas: [First-ReactJS-repo-JS-exercises-and-TM](https://github.com/Ledtius/First-ReactJS-repo-JS-exercises-and-TM)
+- Primer repositorio de pruebas: [First-ReactJS-repo-JS-exercises-and-TM](https://github.com/Ledtius/First-ReactJS-repo-JS-exercises-and-TM)
 
-- ✅ Proyecto base (Todo List): [Todo-list-ReactJS-by-TM](https://github.com/Ledtius/Todo-list-ReactJS-by-TM)
+- Proyecto base (Todo List): [Todo-list-ReactJS-by-TM](https://github.com/Ledtius/Todo-list-ReactJS-by-TM)
 
 ---
 
