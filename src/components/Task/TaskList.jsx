@@ -21,7 +21,7 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
       );
     } else {
       const taskListFilterAll = taskList.filter(({ name }) =>
-        name.includes(filterInput)
+        name.toLowerCase().includes(filterInput.toLowerCase())
       );
 
       return (
@@ -62,7 +62,7 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
       );
     } else {
       const taskListIncompleteFilter = taskListIncomplete.filter(({ name }) =>
-        name.includes(filterInput)
+        name.toLowerCase().includes(filterInput.toLowerCase())
       );
 
       return (
@@ -106,7 +106,7 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
       );
     } else {
       const taskListCompleteFilter = taskListComplete.filter(({ name }) =>
-        name.includes(filterInput)
+        name.toLowerCase().includes(filterInput.toLowerCase())
       );
 
       return (
