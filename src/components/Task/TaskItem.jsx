@@ -69,9 +69,9 @@ const TaskItem = ({
 
   const handleEditTaskAcceptBtn = () => {
     if (taskInput) {
-      const sameTaskName = taskList.some(
-        ({ name, id } = task) => name === taskInput && idTask !== id
-      );
+      const sameTaskName = taskList.some(({ name, id } = task) => {
+        return name.toLowerCase() === taskInput.toLowerCase() && idTask !== id;
+      });
 
       if (!sameTaskName) {
         setTaskList((prevTaskList) =>
