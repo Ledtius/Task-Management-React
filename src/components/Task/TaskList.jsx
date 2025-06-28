@@ -3,6 +3,16 @@ import taskListStyles from "../../styles/Task/TaskList.module.css";
 
 const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
   console.log(listState);
+
+  const taskListFilterByName = () => {
+    const taskListByName = taskList.filter(({ name }) =>
+      name.toLowerCase().includes(filterInput.toLowerCase())
+    );
+    return taskListByName;
+  };
+
+  console.log(taskListFilterByName());
+
   if (listState === "all") {
     if (!filterInput) {
       return (
