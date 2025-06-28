@@ -2,6 +2,7 @@ import TaskItem from "./TaskItem";
 import taskListStyles from "../../styles/Task/TaskList.module.css";
 
 const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
+  console.log(listState);
   if (listState === "all") {
     if (!filterInput) {
       return (
