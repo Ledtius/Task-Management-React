@@ -2,8 +2,6 @@ import TaskItem from "./TaskItem";
 import taskListStyles from "../../styles/Task/TaskList.module.css";
 
 const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
-  console.log(listState);
-
   const taskListFilter = () => {
     let translateState;
 
@@ -21,8 +19,6 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
         name.toLowerCase().includes(filterInput.toLowerCase())
       );
   };
-
-  console.log(taskListFilter());
 
   return (
     <ul className={taskListStyles.list}>
