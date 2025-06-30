@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LucideEdit, CirclePlus, Trash2, Save, Ban } from "lucide-react";
+
+import TaskName from "./TaskName";
 
 import taskItemStyles from "../../styles/Task/TaskItem.module.css";
 
@@ -11,29 +13,11 @@ const TaskItem = ({
   taskList,
   setTaskList,
 }) => {
-  /* Task name state variables */
-
-  const [taskInput, setTaskInput] = useState(taskName);
-
-  const [showAlertEditTask, setShowAlertEditTask] = useState(false);
-
-  const [showEditTaskBtn, setShowEditTaskBtn] = useState(true);
-
-  const [showTask, setShowTask] = useState(true);
-
-  const [showEditTask, setShowEditTask] = useState(false);
-
-  const [showAlertEditTaskFalsy, setShowAlertEditTaskFalsy] = useState(false);
-
   /* Description state variables */
 
   const [descripInput, setDescripInput] = useState(taskDescrip);
 
   const [editDescrip, setEditDescrip] = useState("");
-
-  useEffect(() => {
-    setEditDescrip(descripInput);
-  }, [descripInput]);
 
   const [showAddDecrip, setShowAddDescrip] = useState(false);
 
@@ -52,59 +36,6 @@ const TaskItem = ({
   const [showAlertAddDescrip, setShowAlertAddDescrip] = useState(false);
 
   const [showAlertEditDescrip, setShowAlertEditDescrip] = useState(false);
-
-  /* Task name functions section */
-
-  const handleEditTaskBtn = () => {
-    setShowEditTask(true);
-    setShowEditTaskBtn(false);
-    setShowTask(false);
-  };
-
-  const handleEditTaskInput = (e) => {
-    const inputValue = e.target.value;
-
-    setTaskInput(inputValue);
-  };
-
-  const handleEditTaskAcceptBtn = () => {
-    if (taskInput) {
-      const sameTaskName = taskList.some(({ name, id } = task) => {
-        return name.toLowerCase() === taskInput.toLowerCase() && idTask !== id;
-      });
-
-      if (!sameTaskName) {
-        setTaskList((prevTaskList) =>
-          prevTaskList.map((task) => {
-            if (task.id === idTask) {
-              return { ...task, name: taskInput };
-            }
-            return task;
-          })
-        );
-        setShowEditTaskBtn(true);
-        setShowEditTask(false);
-        setShowTask(true);
-      } else {
-        setTimeout(() => {
-          setShowAlertEditTask(false);
-        }, 1500);
-        setShowAlertEditTask(true);
-      }
-    } else {
-      setTimeout(() => {
-        setShowAlertEditTaskFalsy(false);
-      }, 1500);
-      setShowAlertEditTaskFalsy(true);
-    }
-  };
-
-  const handleEditTaskCancelBtn = () => {
-    setShowEditTask(false);
-    setShowEditTaskBtn(true);
-    setShowTask(true);
-    setTaskInput(taskName);
-  };
 
   /* Description functions section */
 
@@ -246,72 +177,13 @@ const TaskItem = ({
         </label>
 
         <section className={taskItemStyles.nameDescrip}>
-          <header className={taskItemStyles.header} onClick={handleEditTaskBtn}>
-            {showTask && (
-              <h3
-                className={taskItemStyles.taskName}
-                style={
-                  taskState
-                    ? {
-                        textDecoration: "line-through",
-                        textDecorationColor: "#2ecc71",
-                      }
-                    : { textDecoration: "none" }
-                }
-                title="Nombre de la tarea"
-              >
-                {taskName}
-              </h3>
-            )}
-            {showEditTaskBtn && (
-              <button
-                className={taskItemStyles.editBtn}
-                title="Editar nombre de tarea"
-              >
-                <LucideEdit />
-              </button>
-            )}
-          </header>
-          {/* Panel cuando das a editar */}
-          {showEditTask && (
-            <div className={taskItemStyles.editAddPanel}>
-              <input
-                className={taskItemStyles.editAddPanelInput}
-                type="text"
-                placeholder={"Editando nombre..."}
-                onChange={handleEditTaskInput}
-                value={taskInput}
-              />
-              <div className={taskItemStyles.editAddPanelAlertSection}>
-                {showAlertEditTask && (
-                  <small className={taskItemStyles.editAddPanelAlert}>
-                    Nombre ya existente
-                  </small>
-                )}
-                {showAlertEditTaskFalsy && (
-                  <small className={taskItemStyles.editAddPanelAlert}>
-                    Ingrese un valor valido
-                  </small>
-                )}
-              </div>
-              <nav className={taskItemStyles.editAddPanelAC}>
-                <button
-                  className={taskItemStyles.editAddPanelAccept}
-                  onClick={handleEditTaskAcceptBtn}
-                >
-                  <Save className={taskItemStyles.editAddPanelIconBtnAccept} />
-                  Guardar
-                </button>
-                <button
-                  className={taskItemStyles.editAddPanelCancel}
-                  onClick={handleEditTaskCancelBtn}
-                >
-                  <Ban className={taskItemStyles.editAddPanelIconBtnCancel} />
-                  Cancelar
-                </button>
-              </nav>
-            </div>
-          )}
+          <TaskName
+            idTask={idTask}
+            taskName={taskName}
+            taskList={taskList}
+            setTaskList={setTaskList}
+            taskState={taskState}
+          />
           {/* Añadir descripción */}
           {showAddDescripBtn && (
             <footer
@@ -365,7 +237,6 @@ const TaskItem = ({
               </nav>
             </div>
           )}
-
           {/* Cuando se añada la descripción */}
           {showDescripMsg && (
             <div className={taskItemStyles.taskDescripSection}>
