@@ -33,6 +33,7 @@ const TaskDescription = ({
   } = taskDescripShow;
 
   useEffect(() => {
+    console.log(taskDescrip);
     taskDescrip
       ? setTaskDescripShow({
           ...taskDescripShow,
@@ -44,7 +45,7 @@ const TaskDescription = ({
           showDescrip: false,
           showAddDescripSign: true,
         });
-  }, [taskList]);
+  }, [taskDescrip]);
 
   const handleAddDescripBtn = () => {
     setTaskDescripShow({
