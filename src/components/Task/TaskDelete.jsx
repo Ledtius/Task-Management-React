@@ -2,17 +2,26 @@ import taskDeleteStyles from "../../styles/Task/TaskDelete.module.css";
 
 import { ListX } from "lucide-react";
 
-const TaskDelete = ({ taskList, setTaskList, listState }) => {
+const TaskDelete = ({ setTaskList, listState }) => {
+  const handleDeleteList = (bool) => {
+    setTaskList((prevTaskList) =>
+      prevTaskList.filter(({ state }) => state !== bool)
+    );
+  };
+
   const handleBtn = () => {
-    if (listState === "incomplete")
-      setTaskList((prevTaskList) =>
-        prevTaskList.filter(({ state }) => state !== false)
-      );
-    else if (listState === "complete")
-      setTaskList((prevTaskList) =>
-        prevTaskList.filter(({ state }) => state !== true)
-      );
-    else setTaskList([]);
+    switch (listState) {
+      case "incomplete":
+        handleDeleteList(false);
+        break;
+      case "complete":
+        handleDeleteList(true);
+        break;
+
+      default:
+        setTaskList([]);
+        break;
+    }
   };
 
   return (
