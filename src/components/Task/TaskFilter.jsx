@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import taskFilterStyles from "../../styles/Task/TaskFilter.module.css";
 
 import { ListTodo, LayoutList, ListChecks, Search } from "lucide-react";
@@ -9,9 +10,11 @@ const TaskFilter = ({
   setFilterInput,
 }) => {
   const handleBtnIdValue = (e) => {
-    const btnIdValue = e.target.id;
+    const btnIdValue = e.currentTarget.id;
+
     setListState(btnIdValue);
   };
+  useEffect(() => {}, []);
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -22,8 +25,19 @@ const TaskFilter = ({
     setFilterInput(inputValue);
   };
 
+  const handleStyles = () => {
+    switch (listState) {
+      case value:
+        break;
+
+      default:
+        break;
+    }
+  };
+  // console.log(`Out: ${listState}`);
   const handleStylesAll = () => {
     if (listState === "all") {
+      // console.log(listState);
       return {
         transform: "scale(1.1)",
         boxShadow: "0px 2px 10px var(--color-bg-all)",
@@ -33,6 +47,7 @@ const TaskFilter = ({
 
   const handleStylesIncom = () => {
     if (listState === "incomplete") {
+      // console.log(listState);
       return {
         transform: "scale(1.1)",
         boxShadow: "0px 2px 10px var(--color-bg-incomplete)",
@@ -42,6 +57,7 @@ const TaskFilter = ({
 
   const handleStylesComp = () => {
     if (listState === "complete") {
+      // console.log(listState);
       return {
         transform: "scale(1.1)",
         boxShadow: "0px 2px 10px var(--color-bg-completed)",
@@ -57,7 +73,7 @@ const TaskFilter = ({
           id="all"
           style={handleStylesAll()}
           onClick={handleBtnIdValue}
-          title="Filtro de todas las tareas (completas e incompletas)"
+          title="Filtro de todas las tareas"
         >
           <ListTodo className={taskFilterStyles.icon} />
           Todas
