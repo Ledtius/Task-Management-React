@@ -3,13 +3,7 @@ import { LucideEdit, CirclePlus, Trash2, Save, Ban } from "lucide-react";
 
 import taskItemStyles from "../../styles/Task/taskItem.module.css";
 
-const TaskDescription = ({
-  taskList,
-  setTaskList,
-  taskDescrip,
-  idTask,
-  taskName,
-}) => {
+const TaskDescription = ({ setTaskList, taskDescrip, idTask, taskName }) => {
   const [descripInput, setDescripInput] = useState(taskDescrip);
 
   const [editDescrip, setEditDescrip] = useState("");
@@ -33,7 +27,6 @@ const TaskDescription = ({
   } = taskDescripShow;
 
   useEffect(() => {
-    console.log(taskDescrip);
     taskDescrip
       ? setTaskDescripShow({
           ...taskDescripShow,
@@ -65,8 +58,6 @@ const TaskDescription = ({
   };
 
   const handleAddDescripAddBtn = (e) => {
-    console.log(taskDescrip);
-    console.log(descripInput);
     if (descripInput) {
       setTaskDescripShow({
         ...taskDescripShow,
@@ -129,7 +120,6 @@ const TaskDescription = ({
   };
 
   const handleEditDescripAcceptBtn = () => {
-    console.log(editDescrip);
     if (editDescrip) {
       setTaskDescripShow({
         ...taskDescripShow,
