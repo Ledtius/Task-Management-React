@@ -17,29 +17,33 @@ const TaskForm = ({ taskList, setTaskList }) => {
 
   const { name } = task;
 
+  const showTemporaryAlert = (setter, duration = 1500, callback) => {
+    setter(true);
+    setTimeout(() => {
+      setter(false);
+      if (callback) callback();
+    }, duration);
+  };
+
   const handleForm = (e) => {
     e.preventDefault();
 
     let repeatTask = taskList.some(({ name: nameArray }) => name === nameArray);
 
     if (!repeatTask) {
-      if (task.name) {
+      if (name) {
         setTaskList([...taskList, task]);
         setTask({ ...task, name: "" });
       } else {
-        setTimeout(() => {
-          setShowAlertFalsy(false);
-        }, 1500);
-        setShowAlertFalsy(true);
+        showTemporaryAlert(setShowAlertFalsy);
       }
     } else {
-      setTimeout(() => {
-        setShowAlert(false);
-        setTask({ ...task, name: "" });
-      }, 1500);
-      setShowAlert(true);
+      showTemporaryAlert(setShowAlert, 800, () =>
+        setTask({ ...task, name: "" })
+      );
     }
   };
+
   const handleInput = (e) => {
     const inputValue = e.target.value;
 
@@ -56,7 +60,7 @@ const TaskForm = ({ taskList, setTaskList }) => {
           placeholder="Digita tu tarea aqui"
           value={name}
         />
-        <button className={taskFormStyles.btn}>
+        <button className={taskFormStyles.btn} aria-label="Send task">
           <SendIcon className={taskFormStyles.icon} />
         </button>
       </section>
@@ -65,7 +69,9 @@ const TaskForm = ({ taskList, setTaskList }) => {
           <small className={taskFormStyles.alert}>Esta tarea ya existe</small>
         )}
         {showAlertFalsy && (
-          <small className={taskFormStyles.alert}>Ingrese un valor valido</small>
+          <small className={taskFormStyles.alert}>
+            Ingrese un valor valido
+          </small>
         )}
       </div>
     </form>
