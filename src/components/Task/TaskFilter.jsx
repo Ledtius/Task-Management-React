@@ -1,4 +1,3 @@
-import { useState } from "react";
 import taskFilterStyles from "../../styles/Task/TaskFilter.module.css";
 
 import { ListTodo, LayoutList, ListChecks, Search } from "lucide-react";
