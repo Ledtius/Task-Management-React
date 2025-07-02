@@ -56,11 +56,14 @@
 
   /* Utilidad */
   --color-text-filter: #fff;
+  --color-text-info: #0d0d0d;
 
   /* Sombras */
 
   --shadow-input: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-focus: 0 2px 6px rgba(0, 123, 255, 0.25);
+
+  --shadow-text-info: 0 1px 3px rgba(0, 0, 0, 0.333);
 
   --shadow-error: 0 2px 6px #d9534f;
 

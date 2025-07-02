@@ -15,16 +15,9 @@ const TaskInfo = ({ taskList }) => {
   console.log(percentComplete);
   return (
     <section className={taskInfoStyles.info}>
-      <progress
-        value={taskListComp}
-        max={totalTask}
-        className={taskInfoStyles.progressBar}
-      >
-        Progress
-      </progress>
-      <div className={taskInfoStyles.bar2}>
-        <div className={taskInfoStyles.progress} style={styleChange()}></div>
-        {percentComplete}%
+      <div className={taskInfoStyles.bar}>
+        <div className={taskInfoStyles.progressLevel} style={styleChange()}></div>
+        <small className={taskInfoStyles.progressValue}>{percentComplete}%</small>
       </div>
       <small className={taskInfoStyles.score}>
         {taskListComp}/{totalTask}
