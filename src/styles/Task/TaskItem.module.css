@@ -3,13 +3,37 @@
   min-height: 125.6px;
   display: flex;
   align-items: center;
-  gap: 2rem;
-  justify-content: space-between;
+  flex-direction: column;
   padding: var(--padding);
   background-color: var(--color-text-filter);
   border-radius: var(--border-radius-btn);
   /* flex-direction: column; */
   transition: all 0.4s ease;
+  position: relative;
+}
+
+.principal {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+  /* padding: 0.4rem 0 0 0 ; */
+  background-color: var(--color-text-filter);
+  border-radius: var(--border-radius-btn);
+  /* flex-direction: column; */
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.priority {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  /* background-color: red; */
+  /* position: relative; */
+  /* right: 0; */
 }
 
 .taskItem:hover {
@@ -58,16 +82,20 @@
 }
 
 .deleteBtn {
+  /* height: fit-content; */
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;
   transition: all 0.4s ease;
+  width: 10rem;
 }
 
 .deleteBtn:hover {
   transform: scale(1.1);
+
 }
 
 .deleteIcon {

@@ -1,7 +1,10 @@
 import { Trash2 } from "lucide-react";
 
 import TaskName from "./TaskName";
+
 import TaskDescription from "./TaskDescription";
+
+import TaskPriority from "./TaskPriority";
 
 import taskItemStyles from "../../styles/Task/TaskItem.module.css";
 
@@ -42,43 +45,49 @@ const TaskItem = ({
   return (
     <li>
       <article className={taskItemStyles.taskItem}>
-        <label
-          className={taskItemStyles.checkboxContent}
-          title="Marcar/Desmarcar tarea"
-        >
-          <input
-            type="checkbox"
-            onChange={handleCheckbox}
-            checked={taskState}
-            className={taskItemStyles.checkbox}
-          />
-          <span className={taskItemStyles.checkmark}></span>
-        </label>
-
-        <section className={taskItemStyles.nameDescrip}>
-          <TaskName
-            idTask={idTask}
-            taskName={taskName}
-            taskList={taskList}
-            setTaskList={setTaskList}
-            taskState={taskState}
-          />
-          <TaskDescription
-            taskList={taskList}
-            setTaskList={setTaskList}
-            taskDescrip={taskDescrip}
-            taskName={taskName}
-            idTask={idTask}
-          />
+        <section className={taskItemStyles.priority}>
+          <TaskPriority />
         </section>
 
-        <button
-          className={taskItemStyles.deleteBtn}
-          onClick={handleTaskDeleteBtn}
-          title="Eliminar tarea"
-        >
-          <Trash2 className={taskItemStyles.deleteIcon} />
-        </button>
+        <section className={taskItemStyles.principal}>
+          <label
+            className={taskItemStyles.checkboxContent}
+            title="Marcar/Desmarcar tarea"
+          >
+            <input
+              type="checkbox"
+              onChange={handleCheckbox}
+              checked={taskState}
+              className={taskItemStyles.checkbox}
+            />
+            <span className={taskItemStyles.checkmark}></span>
+          </label>
+
+          <section className={taskItemStyles.nameDescrip}>
+            <TaskName
+              idTask={idTask}
+              taskName={taskName}
+              taskList={taskList}
+              setTaskList={setTaskList}
+              taskState={taskState}
+            />
+            <TaskDescription
+              taskList={taskList}
+              setTaskList={setTaskList}
+              taskDescrip={taskDescrip}
+              taskName={taskName}
+              idTask={idTask}
+            />
+          </section>
+
+          <button
+            className={taskItemStyles.deleteBtn}
+            onClick={handleTaskDeleteBtn}
+            title="Eliminar tarea"
+          >
+            <Trash2 className={taskItemStyles.deleteIcon} />
+          </button>
+        </section>
       </article>
     </li>
   );
