@@ -41,28 +41,19 @@ const TaskFilter = ({
 
   const handleStylesAll = () => {
     if (listState === "all") {
-      return {
-        transform: "scale(1.1)",
-        boxShadow: "0px 2px 10px var(--color-bg-all)",
-      };
+      return btnStyles.all;
     }
   };
 
   const handleStylesIncom = () => {
     if (listState === "incomplete") {
-      return {
-        transform: "scale(1.1)",
-        boxShadow: "0px 2px 10px var(--color-bg-incomplete)",
-      };
+      return btnStyles.incomplete;
     }
   };
 
   const handleStylesComp = () => {
     if (listState === "complete") {
-      return {
-        transform: "scale(1.1)",
-        boxShadow: "0px 2px 10px var(--color-bg-completed)",
-      };
+      return btnStyles.complete;
     }
   };
 
