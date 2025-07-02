@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import taskFilterStyles from "../../styles/Task/TaskFilter.module.css";
 
 import { ListTodo, LayoutList, ListChecks, Search } from "lucide-react";
@@ -14,7 +14,6 @@ const TaskFilter = ({
 
     setListState(btnIdValue);
   };
-  useEffect(() => {}, []);
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -25,19 +24,23 @@ const TaskFilter = ({
     setFilterInput(inputValue);
   };
 
-  const handleStyles = () => {
-    switch (listState) {
-      case value:
-        break;
-
-      default:
-        break;
-    }
+  const btnStyles = {
+    all: {
+      transform: "scale(1.1)",
+      boxShadow: "0px 2px 10px var(--color-bg-all)",
+    },
+    incomplete: {
+      transform: "scale(1.1)",
+      boxShadow: "0px 2px 10px var(--color-bg-incomplete)",
+    },
+    complete: {
+      transform: "scale(1.1)",
+      boxShadow: "0px 2px 10px var(--color-bg-completed)",
+    },
   };
-  // console.log(`Out: ${listState}`);
+
   const handleStylesAll = () => {
     if (listState === "all") {
-      // console.log(listState);
       return {
         transform: "scale(1.1)",
         boxShadow: "0px 2px 10px var(--color-bg-all)",
@@ -47,7 +50,6 @@ const TaskFilter = ({
 
   const handleStylesIncom = () => {
     if (listState === "incomplete") {
-      // console.log(listState);
       return {
         transform: "scale(1.1)",
         boxShadow: "0px 2px 10px var(--color-bg-incomplete)",
@@ -57,7 +59,6 @@ const TaskFilter = ({
 
   const handleStylesComp = () => {
     if (listState === "complete") {
-      // console.log(listState);
       return {
         transform: "scale(1.1)",
         boxShadow: "0px 2px 10px var(--color-bg-completed)",
