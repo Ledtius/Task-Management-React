@@ -7,6 +7,8 @@ import TaskForm from "./components/Task/TaskForm";
 
 import TaskFilter from "./components/Task/TaskFilter";
 
+import TaskInfo from "./components/Task/TaskInfo";
+
 import TaskList from "./components/Task/TaskList";
 
 import TaskDelete from "./components/Task/TaskDelete";
@@ -39,6 +41,9 @@ const App = () => {
         filterInput={filterInput}
         setFilterInput={setFilterInput}
       />
+
+      <TaskInfo taskList={taskList} />
+
       <TaskList
         taskList={taskList}
         setTaskList={setTaskList}
