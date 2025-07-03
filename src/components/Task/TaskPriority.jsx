@@ -8,17 +8,22 @@ const TaskPriority = () => {
     showPriority: false,
   });
 
+  const [priorityValue, setPriorityValue] = useState("");
+
   const { showMessage, showPriority } = priorityStyles;
 
   const handleMessage = () => {
     setPriorityStyles({ showMessage: false, showPriority: true });
   };
 
-  const handleHoverStyles = () => {};
+  useEffect(() => {
+    console.log(priorityValue);
+  }, [priorityValue]);
 
-  const handleEnterMouse = (e) => {
-    console.log("Entro");
-    console.log(e.currentTarget.id);
+  const handleStarValue = (e) => {
+    const valueId = e.currentTarget.id;
+
+    setPriorityValue(valueId);
   };
   return (
     <section className={taskPriorityStyles.prioritySection}>
@@ -32,13 +37,28 @@ const TaskPriority = () => {
       )}
       {showPriority && (
         <nav className={taskPriorityStyles.priorityNav}>
-          <LucideStar id="1" className={taskPriorityStyles.starIcon} />
-          <LucideStar
+          <button
+            id="1"
+            className={taskPriorityStyles.starBtn}
+            onClick={handleStarValue}
+          >
+            <LucideStar className={taskPriorityStyles.starIcon} />
+            <small className={taskPriorityStyles.starValue}>1</small>
+          </button>
+          <button
+            className={taskPriorityStyles.starBtn}
             id="2"
-            className={taskPriorityStyles.starIcon}
-            onMouseEnter={handleEnterMouse}
-          />
-          <LucideStar id="3" className={taskPriorityStyles.starIcon} />
+            onClick={handleStarValue}
+          >
+            <LucideStar className={taskPriorityStyles.starIcon} />
+          </button>
+          <button
+            className={taskPriorityStyles.starBtn}
+            id="3"
+            onClick={handleStarValue}
+          >
+            <LucideStar className={taskPriorityStyles.starIcon} />
+          </button>
         </nav>
       )}{" "}
     </section>
