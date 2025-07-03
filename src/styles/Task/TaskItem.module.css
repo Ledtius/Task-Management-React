@@ -2,6 +2,7 @@
   width: var(--flex-width);
   min-height: 125.6px;
   display: flex;
+  gap: 1rem;
   align-items: center;
   flex-direction: column;
   padding: var(--padding);
