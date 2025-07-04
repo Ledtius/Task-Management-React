@@ -1,4 +1,4 @@
-.prioritySection {
+.general {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -40,33 +40,43 @@
   width: 100%;
   display: flex;
   align-items: center;
+  gap: 2rem;
   justify-content: flex-end;
   cursor: pointer;
 }
 
 .starBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.6rem;
   width: fit-content;
-  height: fit-content;
+  padding: 0;
+  margin: 0;
   background-color: transparent;
+
+  background-color: red;
+  border-radius: 2rem;
+  padding: 0.2rem;
   border-color: transparent;
   cursor: pointer;
+  transition: all 0.4s ease;
   position: relative;
 }
 
-.starIcon {
-  fill: gold;
-  stroke: gold;
-  width: 2rem;
-  height: 2rem;
+.starBtn:nth-child(1) {
+  border-radius: 5rem;
+  min-width: 0;
+  width: fit-content;
+  padding: 4%;
+  background-color: grey;
   opacity: 0.5;
-  transition: opacity 0.4s ease;
 }
 
-
-/* .star */
-
-.starBtn:hover .starIcon {
-  opacity: 1;
+.starIcon {
+  stroke: var(--color-text-input);
+  opacity: 0.5;
+  transition: all 0.4s ease;
 }
 
 .starValue {
