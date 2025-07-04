@@ -22,12 +22,13 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
 
   return (
     <ul className={taskListStyles.list}>
-      {taskListFilter().map(({ id, name, description, state }) => {
+      {taskListFilter().map(({ id, name, description, priority, state }) => {
         return (
           <TaskItem
             idTask={id}
             taskName={name}
             taskDescrip={description}
+            taskPriority={priority}
             taskState={state}
             taskList={taskList}
             setTaskList={setTaskList}

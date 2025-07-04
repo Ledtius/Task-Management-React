@@ -13,6 +13,7 @@ const TaskItem = ({
   taskName,
   taskDescrip,
   taskState,
+  taskPriority,
   taskList,
   setTaskList,
 }) => {
@@ -46,7 +47,11 @@ const TaskItem = ({
     <li>
       <article className={taskItemStyles.taskItem}>
         <section className={taskItemStyles.priority}>
-          <TaskPriority />
+          <TaskPriority
+            setTaskList={setTaskList}
+            idTask={idTask}
+            taskPriority={taskPriority}
+          />
         </section>
 
         <section className={taskItemStyles.principal}>

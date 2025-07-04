@@ -9,6 +9,7 @@ const TaskForm = ({ taskList, setTaskList }) => {
     id: "",
     name: "",
     description: "",
+    priority: "low",
     state: false,
   });
 
