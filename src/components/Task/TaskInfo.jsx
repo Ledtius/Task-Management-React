@@ -5,7 +5,7 @@ const TaskInfo = ({ taskList }) => {
 
   const totalTask = taskList.length;
 
-  const percentComplete = Math.round((taskListComp * 100) / totalTask);
+  const percentComplete = Math.round((taskListComp * 100) / totalTask) || 0;
 
   const styleChange = () => {
     return { width: `${percentComplete}%` };
