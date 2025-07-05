@@ -1,4 +1,4 @@
-import { Settings2, LucideDiamondPlus } from "lucide-react";
+import { Circle, LucideDiamondPlus } from "lucide-react";
 import { useEffect, useState } from "react";
 import taskPriorityStyles from "../../styles/Task/TaskPriority.module.css";
 
@@ -8,7 +8,7 @@ const TaskPriority = ({ setTaskList, idTask, taskPriority }) => {
     showPriority: false,
   });
 
-  const [priorityValue, setPriorityValue] = useState("low");
+  const [priorityValue, setPriorityValue] = useState("");
 
   const { showMessage, showPriority } = priorityStyles;
 
@@ -17,7 +17,7 @@ const TaskPriority = ({ setTaskList, idTask, taskPriority }) => {
   };
 
   useEffect(() => {
-    if (priorityValue !== "low")
+    if (priorityValue)
       setTaskList((prevTaskList) =>
         prevTaskList.map((task) => {
           if (task.id === idTask) return { ...task, priority: priorityValue };
@@ -26,16 +26,28 @@ const TaskPriority = ({ setTaskList, idTask, taskPriority }) => {
       );
   }, [priorityValue]);
 
-  const handleSelect = (e) => {
-    const valueId = e.currentTarget.value;
-    setPriorityValue(valueId);
-  };
   return (
-    <form>
-      <select onClick={handleSelect} name="" id="">
-        <option value="low">Baja</option>
-        <option value="medium">Media</option>
-        <option value="hight">Alta</option>
+    <form className={taskPriorityStyles.form}>
+      <select
+        value={taskPriority}
+        onChange={(e) => setPriorityValue(e.target.value)}
+        onMouseEnter={() => setShowLabel(true)}
+        onMouseLeave={() => setShowLabel(false)}
+        id="priority-select"
+        className={`${taskPriorityStyles.select} ${
+          taskPriority === "low"
+            ? taskPriorityStyles.low
+            : taskPriority === "medium"
+            ? taskPriorityStyles.medium
+            : taskPriority === "hight"
+            ? taskPriorityStyles.hight
+            : ""
+        }`}
+      >
+        <optgroup label="Nivel de prioridad" />
+        <option value="low">Bajo 🟢</option>
+        <option value="medium">Media 🟠</option>
+        <option value="hight">Alta 🔴</option>
       </select>
     </form>
   );

@@ -1,89 +1,45 @@
-.general {
+.form {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  min-height: 3rem;
-  /* background-color: red; */
+  gap: 0.5rem;
 }
 
-.btnMsg {
-  display: flex;
-  align-items: center;
-  /* gap: 2rem; */
-  opacity: 0.5;
-  transition: all 0.4s ease;
-  cursor: pointer;
+.label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-descripmsg);
 }
 
-.msg {
-  color: var(--color-text-input);
-}
-
-.btn {
-  background-color: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-}
-
-.Addicon {
-  stroke: var(--color-bg-completed);
-}
-
-.btnMsg:hover {
-  opacity: 1;
-  transform: scale(1.04);
-}
-
-.priorityNav {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  justify-content: flex-end;
-  cursor: pointer;
-}
-
-.starBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 3.6rem;
-  width: fit-content;
-  padding: 0;
-  margin: 0;
-  background-color: transparent;
-
-  background-color: red;
+.select {
+  padding: 0.4rem;
   border-radius: 2rem;
-  padding: 0.2rem;
-  border-color: transparent;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  position: relative;
-}
-
-.starBtn:nth-child(1) {
-  border-radius: 5rem;
-  min-width: 0;
-  width: fit-content;
-  padding: 4%;
-  background-color: grey;
-  opacity: 0.5;
-}
-
-.starIcon {
-  stroke: var(--color-text-input);
-  opacity: 0.5;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 2px solid var(--color-text-descripmsg);
+  outline: none;
   transition: all 0.4s ease;
 }
 
-.starValue {
-  position: absolute;
-  inset: 0;
+.select:hover,
+.select:focus {
+  border-color: #88888869;
+  background-color: #f9f9f9;
 }
 
-.starIcon-- {
-  opacity: 1;
+.low {
+  background-color: #e6f7e6;
+  border-color: #28a74600;
+  color: #0f5132;
+}
+
+.medium {
+  background-color: #fff4e6;
+  border-color: #ffc10700;
+  color: #664d03;
+}
+
+.hight {
+  background-color: #fdecea;
+  border-color: #dc354500;
+  color: #842029;
 }
