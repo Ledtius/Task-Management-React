@@ -5,6 +5,7 @@ const TaskPriority = ({ setTaskList, idTask, taskPriority }) => {
   const [priorityValue, setPriorityValue] = useState(0);
 
   useEffect(() => {
+    console.log(priorityValue);
     if (priorityValue)
       setTaskList((prevTaskList) =>
         prevTaskList.map((task) => {
@@ -12,23 +13,24 @@ const TaskPriority = ({ setTaskList, idTask, taskPriority }) => {
           return task;
         })
       );
+
+    console.log(priorityValue);
   }, [priorityValue]);
+
+  const priorityStyleSelect = () => {
+    if (taskPriority === 1) return taskPriorityStyles.low;
+    else if (taskPriority === 2) return taskPriorityStyles.medium;
+    else if (taskPriority === 3) return taskPriorityStyles.hight;
+    return taskPriorityStyles.low;
+  };
 
   return (
     <form className={taskPriorityStyles.form}>
       <select
         value={taskPriority}
-        onChange={(e) => setPriorityValue(e.target.value)}
+        onChange={(e) => setPriorityValue(Number(e.target.value))}
         id="priority-select"
-        className={`${taskPriorityStyles.select} ${
-          taskPriority === 1
-            ? taskPriorityStyles.low
-            : taskPriority === 2
-            ? taskPriorityStyles.medium
-            : taskPriority === 3
-            ? taskPriorityStyles.hight
-            : ""
-        }`}
+        className={`${taskPriorityStyles.select} ${priorityStyleSelect()}`}
       >
         <optgroup label="Nivel de prioridad" />
         <option value={1}>Bajo 🟢</option>
