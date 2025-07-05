@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import taskPriorityStyles from "../../styles/Task/TaskPriority.module.css";
 
 const TaskPriority = ({ setTaskList, idTask, taskPriority }) => {
-  const [priorityValue, setPriorityValue] = useState("");
+  const [priorityValue, setPriorityValue] = useState(0);
 
   useEffect(() => {
     if (priorityValue)
@@ -21,19 +21,19 @@ const TaskPriority = ({ setTaskList, idTask, taskPriority }) => {
         onChange={(e) => setPriorityValue(e.target.value)}
         id="priority-select"
         className={`${taskPriorityStyles.select} ${
-          taskPriority === "low"
+          taskPriority === 1
             ? taskPriorityStyles.low
-            : taskPriority === "medium"
+            : taskPriority === 2
             ? taskPriorityStyles.medium
-            : taskPriority === "hight"
+            : taskPriority === 3
             ? taskPriorityStyles.hight
             : ""
         }`}
       >
         <optgroup label="Nivel de prioridad" />
-        <option value="low">Bajo 🟢</option>
-        <option value="medium">Media 🟠</option>
-        <option value="hight">Alta 🔴</option>
+        <option value={1}>Bajo 🟢</option>
+        <option value={2}>Media 🟠</option>
+        <option value={3}>Alta 🔴</option>
       </select>
     </form>
   );
