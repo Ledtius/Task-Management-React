@@ -13,11 +13,16 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
         .filter(({ state }) => state === translateState)
         .filter(({ name }) =>
           name.toLowerCase().includes(filterInput.toLowerCase())
-        );
+        )
+        .sort((task1, task2) => task1.priority - task2.priority)
+        .reverse();
     else
-      return taskList.filter(({ name }) =>
-        name.toLowerCase().includes(filterInput.toLowerCase())
-      );
+      return taskList
+        .filter(({ name }) =>
+          name.toLowerCase().includes(filterInput.toLowerCase())
+        )
+        .sort((task1, task2) => task1.priority - task2.priority)
+        .reverse();
   };
 
   return (
