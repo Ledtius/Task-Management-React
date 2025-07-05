@@ -1,20 +1,8 @@
-import { Circle, LucideDiamondPlus } from "lucide-react";
 import { useEffect, useState } from "react";
 import taskPriorityStyles from "../../styles/Task/TaskPriority.module.css";
 
 const TaskPriority = ({ setTaskList, idTask, taskPriority }) => {
-  const [priorityStyles, setPriorityStyles] = useState({
-    showMessage: true,
-    showPriority: false,
-  });
-
   const [priorityValue, setPriorityValue] = useState("");
-
-  const { showMessage, showPriority } = priorityStyles;
-
-  const handleMessage = () => {
-    setPriorityStyles({ showMessage: false, showPriority: true });
-  };
 
   useEffect(() => {
     if (priorityValue)
@@ -31,8 +19,6 @@ const TaskPriority = ({ setTaskList, idTask, taskPriority }) => {
       <select
         value={taskPriority}
         onChange={(e) => setPriorityValue(e.target.value)}
-        onMouseEnter={() => setShowLabel(true)}
-        onMouseLeave={() => setShowLabel(false)}
         id="priority-select"
         className={`${taskPriorityStyles.select} ${
           taskPriority === "low"
