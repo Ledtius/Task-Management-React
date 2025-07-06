@@ -44,7 +44,7 @@ const TaskItem = ({
   };
 
   return (
-    <li>
+    <li className={taskItemStyles.taskItemTop}>
       <article className={taskItemStyles.taskItem}>
         <section className={taskItemStyles.priority}>
           <TaskPriority
