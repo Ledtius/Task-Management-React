@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { LucideEdit, CirclePlus, Trash2, Save, Ban } from "lucide-react";
 
-import taskItemStyles from "../../styles/Task/taskItem.module.css";
+import taskItemStyles from "../../styles/Task/TaskItem.module.css";
 
 const TaskDescription = ({ setTaskList, taskDescrip, idTask, taskName }) => {
   const [descripInput, setDescripInput] = useState(taskDescrip);
