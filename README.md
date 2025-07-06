@@ -9,6 +9,8 @@ Esta es una aplicación web construida con ReactJS que permite gestionar tareas 
 - Agregar tareas con nombre y descripción
 - Editar nombre y descripción de tareas
 - Eliminar tareas individualmente o eliminar solo la descripción
+- Barra de progreso
+- Marcar y organizar tareas por prioridad
 - Marcar tareas como completadas
 - Filtrar tareas por estado: Todas, Completadas o Incompletas
 - Buscar tareas por nombre dentro de cada filtro
@@ -45,11 +47,9 @@ Esta es una aplicación web construida con ReactJS que permite gestionar tareas 
 
 ### 🔧 Posibles mejoras a futuro
 
-- Barra de progreso
-- Tareas con prioridad (alta, media, baja)
 - Fechas de creación y vencimiento
-- Animaciones suaves (agregado, eliminado, filtros)
-- Mejoras visuales en la UI
+- Animaciones y mejoras visuales
+
 
 ---
 
