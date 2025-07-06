@@ -27,7 +27,7 @@ Esta es una aplicación web construida con ReactJS que permite gestionar tareas 
 - Inputs controlados (`value`)
 - Lifting state up (Hijos alteran el estado del padre)
 
-- Listas con `map`, `filter`, `some`
+- Listas con `map`, `filter`, `some`, `sort`
 - `crypto.randomUUID()` para generar IDs únicos
 -	Lazy initialization, para iniciar la variable de estado con valor de localStorage
 
