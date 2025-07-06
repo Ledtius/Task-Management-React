@@ -2,17 +2,6 @@
   animation: appear 0.6s ease;
 }
 
-/* @keyframes appear {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-} */
-
 .taskItem {
   width: var(--flex-width);
   min-height: 125.6px;
