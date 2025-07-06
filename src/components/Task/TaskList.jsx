@@ -1,8 +1,6 @@
 import TaskItem from "./TaskItem";
 import taskListStyles from "../../styles/Task/TaskList.module.css";
 
-import * as motion from "motion/react-client";
-
 const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
   const taskListFilter = () => {
     let translateState;
@@ -28,11 +26,7 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
   };
 
   return (
-    <motion.ul
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className={taskListStyles.list}
-    >
+    <ul className={taskListStyles.list}>
       {taskListFilter().map(({ id, name, description, priority, state }) => {
         return (
           <TaskItem
@@ -47,7 +41,7 @@ const TaskList = ({ taskList, setTaskList, listState, filterInput }) => {
           />
         );
       })}
-    </motion.ul>
+    </ul>
   );
 };
 
