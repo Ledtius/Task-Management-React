@@ -8,6 +8,10 @@ import TaskPriority from "./TaskPriority";
 
 import taskItemStyles from "../../styles/Task/TaskItem.module.css";
 
+// import * as motion from "motion/react-client";
+
+import * as motion from "motion/react-client";
+
 const TaskItem = ({
   idTask,
   taskName,
@@ -44,7 +48,11 @@ const TaskItem = ({
   };
 
   return (
-    <li className={taskItemStyles.taskItemTop}>
+    <motion.li
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className={taskItemStyles.taskItemTop}
+    >
       <article className={taskItemStyles.taskItem}>
         <section className={taskItemStyles.priority}>
           <TaskPriority
@@ -94,7 +102,7 @@ const TaskItem = ({
           </button>
         </section>
       </article>
-    </li>
+    </motion.li>
   );
 };
 
